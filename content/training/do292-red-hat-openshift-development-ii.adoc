@@ -1,0 +1,43 @@
+= Red Hat OpenShift Development II: Creating Microservices with Red Hat Runtimes (DO292)
+
+
+
+*Course description*
+
+Developing microservices using Red Hat Runtimes
+
+Red Hat OpenShift Development II: Creating Microservices with Red Hat Runtimes (DO292) introduces you to three runtimes: WildFly Swarm, Vert.x, and Spring Boot. This course is an intensive, hands-on programming experience in which you will develop multiple microservices using the three runtimes and deploy them on a Red Hat(R) OpenShift Container Platform cluster.
+
+This course is based on Red Hat(R) Enterprise Linux 7.5 and OpenShift Container Platform 3.9.
+
+Like members of many organizations, you may be interested in or are already employing microservice architectures. We have introduced solutions to ease the on-ramp for the creation and deployment of microservices through its developer programs and Red Hat(R)Runtimes.
+
+*Course summary*
+
+
+* Deploy microservices with WildFly Swarm.
+* Deploy microservices with Vert.x.
+* Deploy microservices with Spring Boot.
+* Develop an API gateway.
+* Implement fault tolerance with Hystrix.
+
+
+*Audience for this course*
+
+
+* Java application developers interested in employing microservices architectures
+* Software architects interested in creating and deploying microservices
+
+
+*Prerequisites for this course*
+
+Red Hat recommends these prerequisites:
+
+Have completed Red Hat Application Development I: Implementing Microservice Architectures (DO283), or demonstrate equivalent experience with microservice architecture
+Being a Red Hat Certified System Administrator (RHCSA) or higher is helpful, for navigation and usage of the command line
+Being a Red Hat Certified Specialist in Containerized Application Development, completing Red Hat OpenShift Development I: Containerizing Applications (DO288), or experiencing developing and deploying containerized applications to an OpenShift cluster
+
+
+
+For full details, or to enroll: +
+https://www.redhat.com/en/services/training/do292-red-hat-openshift-development-ii

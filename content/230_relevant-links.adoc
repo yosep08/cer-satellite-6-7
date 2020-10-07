@@ -1,0 +1,64 @@
+////
+Purpose
+-------
+This section should duplicate and consolidate any links to external resources
+contained elsewhere in this document.  The intention is to create a single
+reference point for all external resources.
+
+As of this version the process of consolidating external links is manual.  At
+some point this process may be scripted.  (If you take it upon yourself to
+script the process, please share it with the CER WG so it can be incorporated
+into the process!)
+
+Sample
+------
+Link to Latest UCS VIC Drivers:
+https://www.cisco.com/c/en/us/td/docs/unified_computing/ucs/sw/vic_drivers/install/Linux/b_Cisco_VIC_Drivers_for_Linux_Installation_Guide.html
+
+REST API Example for Starting a VM on RHV
+https://access.redhat.com/documentation/en-us/red_hat_virtualization/4.3/html/rest_api_guide/documents-004_quick_start_example#start_the_virtual_machine
+////
+
+= Red Hat Satellite 6
+
+Below is a list of relevant guidance documentation for Satellite Server 6.
+
+Full Documentation Listing:
+
+* {sat6x_docs_list}
+
+RHEL:
+
+* {sat6x_install_rhel_7}
+
+Deployment:
+
+* {sat6x_rel_notes} 
+* {sat6x_pkg_manifest}
+
+Installation and Upgrade:
+
+* {sat6x_inst_plan} 
+* {sat6x_quick}
+* {sat6x_inst_conn} 
+* {sat6x_inst_disc}
+* {sat6x_inst_cap}
+* {sat6x_inst_upgrade} 
+
+Administration:
+
+* {sat6x_admin_sat}
+* {sat6x_admin_hosts}
+* {sat6x_admin_prov}
+* {sat6x_admin_content} 
+* {sat6x_admin_lb} 
+* {sat6x_admin_vm_sub} 
+
+Reference:
+
+* {sat6x_ref_api}
+* {sat6x_ref_hammer}
+* {sat6x_ref_hammer_cheat}
+* {sat6x_ref_monitor}
+* {sat6x_ref_puppet} 
+* {sat6x_ref_perf} 

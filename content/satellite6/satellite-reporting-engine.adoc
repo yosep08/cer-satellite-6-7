@@ -1,0 +1,43 @@
+<<<
+= Reporting
+
+Overview of the reports included with Satellite 6.5.
+
+{Cust} has expressed an interest in the reporting functionality of {rhsat}.
+
+{rhsat} as of 6.5 includes four pre-made reports that {Cust} can run:
+
+* Applicable errata report shows a list of errata that is applicable to content hosts (can optionally filter on hosts or errata).
+* Host statuses report shows the status of your Satellite hosts (can optionally filter on hosts).
+* Registered hosts report shows information on your Satellite hosts such as IP address, OS version, and attached subscriptions (can optionally filter on hosts).
+* Subscriptions report shows information on subscriptions, such as the quantity, the number available, and the SKU (can optionally filter on subscription parameters).
+
+Custom reports can also be created in different formats (txt,csv,html,etc) which can help {cust} with some of the regulatory requirements around patching.
+
+== Managing Security compliance
+
+Satellite 6 uses the Security Content Automation Protocol (SCAP) to define security configuration policies. For example, a security policy might specify that for hosts running Red Hat Enterprise Linux, login via SSH is not permitted for the root account.
+
+OpenSCAP enables {rhsat} to receive automated vulnerability assessment and security compliance audits from managed hosts. You can upload SCAP compliance contents, create compliance policies out of them and assign the policies to hosts or hostgroups. The foreman_openscap plugin provides three default SCAP contents, so you can start testing security compliance on RHEL6/7.
+
+OpenSCAP reports (aka ARF reports) will help you find vulnerabilities on your hosts and also suggest a remediation plan to fix those vulnerabilities.
+
+You can either create SCAP content or obtain it from a vendor. Supported profiles are provided for Red Hat Enterprise Linux in the scap-security-guide package. SCAP content that can be available includes NIST, STIG, and PCI-DSS specific content. The creation of SCAP content is outside the scope of this engagement and report.
+
+NOTE: For more information about SCAP see the https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/Security_Guide/[RHEL7 Security Guide]
+
+=== Creating a compliance policy
+
+With Satellite 6, you can create a compliance policy to scan your content hosts to ensure that the hosts remain compliant to your security requirements.
+
+You can use  Ansible to deploy the compliance policy to your hosts. Ansible does not perform scheduled runs. To add a new policy, you must run Ansible role manually or using remote execution.
+
+
+
+References:
+
+* {sat6x_reporting_gettingstarted}
+* {sat6x_reporting_openscap_with_ansible}
+* {sat6x_reporting_engine_overview}
+* {sat6x_reporting_compliance}
+

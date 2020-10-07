@@ -1,0 +1,108 @@
+////
+Purpose
+-------
+This section is a placeholder which should be replaced by training
+recommendations specific to the product(s) being delivered.
+
+If you are building this document for a specific product, please use the format
+shown in the examples below.
+
+
+Sample
+------
+== Red Hat Satellite
+
+include::training/rh053-red-hat-satellite-technical-overview.adoc[leveloffset=+2]
+include::training/rh403-red-hat-satellite-6-administration.adoc[leveloffset=+2]
+
+////
+
+= Red Hat Training
+
+Specific course descriptions and availability can be found on Red Hat’s website under Training and Certification. The following courses are recommended:
+
+== Red Hat Learning Subscription
+
+Fill skills gaps and address business challenges by taking advantage of unlimited access to our comprehensive curriculum.
+
+For full details, or to enroll: +
+https://www.redhat.com/en/services/training/learning-subscription#tab.rhls.1
+
+== Red Hat Skills Assessment
+
+Use the skills assessment tool to discover what training opportunities you may benefit from.
+
+For full details, or to enroll: +
+https://www.redhat.com/rhtapps/assessment
+
+== Red Hat Enterprise Linux Courses
+
+include::training/rh124-red-hat-system-administration-i.adoc[leveloffset=+2]
+include::training/rh134-red-hat-system-administration-ii.adoc[leveloffset=+2]
+include::training/rh053-red-hat-satellite-technical-overview.adoc[leveloffset=+2]
+include::training/rh403-red-hat-satellite-6-administration.adoc[leveloffset=+2]
+
+////
+// list generated with `ls -1 training/ | sed 's/\(.*\)/include::training\/\1[leveloffset=+2]/'`
+include::training/ad183-red-hat-application-development-i-programming-java-ee.adoc[leveloffset=+2]
+include::training/ad240-build-and-administer-apis-red-hat-3scale-api-management.adoc[leveloffset=+2]
+include::training/ad248-red-hat-jboss-application-administration-i.adoc[leveloffset=+2]
+include::training/ad348-red-hat-jboss-application-administration-ii.adoc[leveloffset=+2]
+include::training/ad371-red-hat-decision-manager-and-red-hat-process-automation-manager-70-business-users.adoc[leveloffset=+2]
+include::training/ad373-red-hat-decision-manager-and-red-hat-process-automation-manager-70-developers.adoc[leveloffset=+2]
+include::training/ad421-camel-integration-and-development-with-red-hat-fuse.adoc[leveloffset=+2]
+include::training/ad427-developing-workflow-applications-red-hat-jboss-bpm-suite.adoc[leveloffset=+2]
+include::training/ad440-red-hat-jboss-amq-administration.adoc[leveloffset=+2]
+include::training/ad465-implementing-red-hat-jboss-brms.adoc[leveloffset=+2]
+include::training/ceph125-red-hat-ceph-storage-architecture-and-administration.adoc[leveloffset=+2]
+include::training/cl010-red-hat-openstack-technical-overview.adoc[leveloffset=+2]
+include::training/cl110-red-hat-openstack-administration-i.adoc[leveloffset=+2]
+include::training/cl210-red-hat-openstack-administration-ii.adoc[leveloffset=+2]
+include::training/cl310-red-hat-openstack-administration-iii-networking-foundations-nfv.adoc[leveloffset=+2]
+include::training/do007-ansible-essentials-simplicity-automation-technical-overview.adoc[leveloffset=+2]
+include::training/do040-red-hat-agile-integration-technical-overview.adoc[leveloffset=+2]
+include::training/do080-deploying-containerized-applications-technical-overview.adoc[leveloffset=+2]
+include::training/do092-developing-cloud-native-applications-microservices-architectures.adoc[leveloffset=+2]
+include::training/do101-introduction-openshift-applications.adoc[leveloffset=+2]
+include::training/do180-introduction-containers-kubernetes-red-hat-openshift.adoc[leveloffset=+2]
+include::training/do280-red-hat-openshift-administration-i.adoc[leveloffset=+2]
+include::training/do283-red-hat-application-development-ii-implementing-microservice-architectures.adoc[leveloffset=+2]
+include::training/do285-containers-kubernetes-and-red-hat-openshift-administration-i.adoc[leveloffset=+2]
+include::training/do288-red-hat-openshift-development-i-containerizing-applications.adoc[leveloffset=+2]
+include::training/do292-red-hat-openshift-development-ii.adoc[leveloffset=+2]
+include::training/do295-containers-kubernetes-and-red-hat-openshift-development-I.adoc[leveloffset=+2]
+include::training/do328-building-resilient-microservices-with-istio-and-red-hat-openshift-service-mesh.adoc[leveloffset=+2]
+include::training/do380-red-hat-openshift-administration-ii-high-availability.adoc[leveloffset=+2]
+include::training/do405-configuration-management-puppet.adoc[leveloffset=+2]
+include::training/do407-automation-ansible-i.adoc[leveloffset=+2]
+include::training/do409-automation-ansible-ii-ansible-tower.adoc[leveloffset=+2]
+include::training/do410-automation-ansible-and-ansible-tower.adoc[leveloffset=+2]
+include::training/do417-microsoft-windows-automation-red-hat-ansible.adoc[leveloffset=+2]
+include::training/do425-red-hat-security-securing-containers-and-openshift.adoc[leveloffset=+2]
+include::training/do426-red-hat-security-securing-containers-and-openshift-exam.adoc[leveloffset=+2]
+include::training/do447-advanced-automation-ansible-best-practices.adoc[leveloffset=+2]
+include::training/do457-ansible-network-automation.adoc[leveloffset=+2]
+include::training/do500-devops-culture-and-practice-enablement.adoc[leveloffset=+2]
+include::training/do700-container-adoption-boot-camp.adoc[leveloffset=+2]
+include::training/do720-container-adoption-boot-camp-for-developers.adoc[leveloffset=+2]
+include::training/rh018-virtualization-and-infrastructure-migration-technical-overview.adoc[leveloffset=+2]
+include::training/rh024-red-hat-linux-technical-overview.adoc[leveloffset=+2]
+include::training/rh053-red-hat-satellite-technical-overview.adoc[leveloffset=+2]
+include::training/rh124-red-hat-system-administration-i.adoc[leveloffset=+2]
+include::training/rh134-red-hat-system-administration-ii.adoc[leveloffset=+2]
+include::training/rh199-rhcsa-rapid-track-course.adoc[leveloffset=+2]
+include::training/rh236-red-hat-gluster-storage-administration.adoc[leveloffset=+2]
+include::training/rh254-red-hat-system-administration-iii-data-center-services-red-hat-enterprise-linux-7.adoc[leveloffset=+2]
+include::training/rh259-red-hat-enterprise-linux-sap-solutions.adoc[leveloffset=+2]
+include::training/rh294-red-hat-linux-automation-with-ansible.adoc[leveloffset=+2]
+include::training/rh299-rhce-certification-lab.adoc[leveloffset=+2]
+include::training/rh318-red-hat-virtualization.adoc[leveloffset=+2]
+include::training/rh342-red-hat-enterprise-linux-diagnostics-and-troubleshooting.adoc[leveloffset=+2]
+include::training/rh354-red-hat-enterprise-linux-8-new-features-experienced-linux-administrators.adoc[leveloffset=+2]
+include::training/rh358-red-hat-services-management-automation.adoc[leveloffset=+2]
+include::training/rh362-red-hat-security-identity-management-and-active-directory-integration.adoc[leveloffset=+2]
+include::training/rh403-red-hat-satellite-6-administration.adoc[leveloffset=+2]
+include::training/rh415-red-hat-security-linux-physical-virtual-and-cloud.adoc[leveloffset=+2]
+include::training/rh436-red-hat-high-availability-clustering.adoc[leveloffset=+2]
+include::training/rh442-red-hat-enterprise-performance-tuning.adoc[leveloffset=+2]
+////

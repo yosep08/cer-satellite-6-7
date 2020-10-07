@@ -1,0 +1,30 @@
+////
+Purpose
+-------
+Add additional appendix includes here or optionally put them directly in line.
+
+Sample
+------
+[appendix]
+== My Additional Appendix
+//include::my_additional_appendix.adoc[]
+
+[appendix]
+== My Additional Appendix 2
+//include::my_additional_appendix_2.adoc[]
+
+[appendix]
+== My Additional Appendix 3
+My inline appendix
+////
+
+[appendix]
+= Red Hat Satellite 6
+
+include::satellite6/satellite-architecture-introduction.adoc[leveloffset=+1]
+include::satellite6/satellite-architecture-infra.adoc[leveloffset=+1]
+include::satellite6/satellite-architecture-subscription-management.adoc[leveloffset=+1]
+include::satellite6/satellite-architecture-content-management.adoc[leveloffset=+1]
+include::satellite6/satellite-architecture-design-provisioning.adoc[leveloffset=+1]
+include::satellite6/satellite-troubleshooting-locations.adoc[leveloffset=+1]
+include::satellite6/satellite-reporting-engine.adoc[leveloffset=+1]

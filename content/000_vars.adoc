@@ -1,0 +1,136 @@
+////
+Purpose
+-------
+In the "Base" directory, this section is a placeholder which is to be extended
+by vars specific to the product or products being delivered.
+
+If the product directory is missing a corresponding "vars.adoc", vars are not
+used for it or can be found in the default vars/redhat-vars.adoc
+////
+
+// Below are variables specific to the Satellite-6x content
+
+// Documentation URLs
+
+:sat6x_docs_list: https://access.redhat.com/documentation/en-us/red_hat_satellite[Product Documentation for Red Hat Satellite]
+
+:sat6x_install_rhel_7: https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/installation_guide/index[Installing Red Hat Enterprise Linux 7]
+
+:sat6x_rel_notes: https://access.redhat.com/documentation/en-us/red_hat_satellite/6.7/html/release_notes/index[Satellite Server Release Notes]
+
+:sat6x_pkg_manifest: https://access.redhat.com/documentation/en-us/red_hat_satellite/6.7/html/package_manifest/index[Package Manifest]
+
+:sat6x_quick: https://access.redhat.com/documentation/en-us/red_hat_satellite/6.7/html/quick_start_guide/[Quickstart Guide]
+
+:sat6x_install_plan_url: access.redhat.com/documentation/en-us/red_hat_satellite/6.7/html/planning_for_red_hat_satellite_6/
+
+:sat6x_inst_plan: https://{sat6x_install_plan_url}[Planning for Red Hat Satellite 6]
+
+:sat6x_inst_plan_lc: https://{sat6x_install_plan_url}chap-red_hat_satellite-architecture_guide-deployment_considerations#sect-Defining_the_Content_Life_Cycle[Content Life Cycle]
+
+:sat6x_install_connected_url: access.redhat.com/documentation/en-us/red_hat_satellite/6.7/html/installing_satellite_server_from_a_connected_network/
+
+:sat6x_inst_conn: https://{sat6x_install_connected_url}[Installing Satellite Server from a Connected Network]
+
+:sat6x_inst_conn_req: https://{sat6x_install_connected_url}preparing-environment-for-satellite-installation#system-requirements_satellite[Satellite System Requirements]
+
+:sat6x_inst_conn_storage: https://{sat6x_install_connected_url}preparing-environment-for-satellite-installation#storage-guidelines_satellite[Satellite Storage Guidelines]
+
+:sat6x_inst_conn_port: https://{sat6x_install_connected_url}preparing-environment-for-satellite-installation#satellite-ports-and-firewalls-requirements_satellite[Satellite Port Requirements]
+
+:sat6x_inst_disc: https://access.redhat.com/documentation/en-us/red_hat_satellite/6.7/html/installing_satellite_server_from_a_disconnected_network/[Installing Satellite Server from a Disconnected Network]
+
+:sat6x_inst_capsule_url: access.redhat.com/documentation/en-us/red_hat_satellite/6.7/html/installing_capsule_server/
+
+:sat6x_inst_cap: https://{sat6x_inst_capsule_url}[Installing Satellite Capsule Server]
+
+:sat6x_inst_cap_req: https://{sat6x_inst_capsule_url}preparing-environment-for-capsule-installation#system-requirements_capsule[Capsule System Requirements]
+
+:sat6x_inst_cap_port: https://{sat6x_inst_capsule_url}preparing-environment-for-capsule-installation#capsule-ports-and-firewalls-requirements_capsule[Capsule Port Requirements]
+
+:sat6x_inst_upgrade: https://access.redhat.com/documentation/en-us/red_hat_satellite/6.7/html/upgrading_and_updating_red_hat_satellite/[Upgrading and Updating Satellite Server]
+
+:sat6x_admin_satellite_url: access.redhat.com/documentation/en-us/red_hat_satellite/6.7/html/administering_red_hat_satellite/
+
+:sat6x_admin_sat: https://{sat6x_admin_satellite_url}[Administering Satellite Server]
+
+:sat6x_admin_ext_auth_host: https://{sat6x_admin_satellite_url}chap-red_hat_satellite-administering_red_hat_satellite-configuring_external_authentication#sect-Red_Hat_Satellite-Administering_Red_Hat_Satellite-Configuring_External_Authentication-External_Authentication_for_Provisioned_Hosts[External Authentication for Provisioned Hosts]
+
+:sat6x_admin_hosts: https://access.redhat.com/documentation/en-us/red_hat_satellite/6.7/html/managing_hosts/[Managing Hosts]
+
+:sat6x_admin_prov: https://access.redhat.com/documentation/en-us/red_hat_satellite/6.7/html/provisioning_guide/[Provisioning]
+
+:sat6x_admin_content: https://access.redhat.com/documentation/en-us/red_hat_satellite/6.7/html/content_management_guide/[Content Management]
+
+:sat6x_admin_lb: https://access.redhat.com/documentation/en-us/red_hat_satellite/6.7/html/load_balancing_guide/[Load Balancing Satellite Server]
+
+:sat6x_admin_vm_sub: https://access.redhat.com/documentation/en-us/red_hat_satellite/6.7/html/configuring_virtual_machine_subscriptions_in_red_hat_satellite/[Virtual Machine Subscriptions]
+
+:sat6x_ref_api: https://access.redhat.com/documentation/en-us/red_hat_satellite/6.7/html/api_guide/[API Guide]
+
+:sat6x_ref_hammer: https://access.redhat.com/documentation/en-us/red_hat_satellite/6.7/html/hammer_cli_guide/[Hammer CLI Guide]
+
+:sat6x_ref_hammer_cheat: https://access.redhat.com/documentation/en-us/red_hat_satellite/6.7/html/hammer_cheat_sheet/[Hammer Cheat Sheet]
+
+:sat6x_ref_monitor: https://access.redhat.com/documentation/en-us/red_hat_satellite/6.7/html/monitoring_red_hat_satellite/[Monitoring Satellite Server]
+
+:sat6x_ref_puppet: https://access.redhat.com/documentation/en-us/red_hat_satellite/6.7/html/puppet_guide/[Puppet Guide]
+
+:sat6x_ref_perf: https://access.redhat.com/solutions/5001161[Performance Tuning Satellite Server]
+
+//KB and Solution Articles
+
+:sat6x_disk_speed: https://access.redhat.com/solutions/3397771[Impact of Disk Speed on Satellite 6 Operations]
+
+:sat6x_ha: https://access.redhat.com/solutions/3402361[High Availability with Satellite]
+
+:sat6x_sub_management: https://access.redhat.com/articles/subscription-management-satellite-6[Satelllite 6 Subscription Management]
+
+:sat6x_eus_sub: https://access.redhat.com/solutions/22763[Red Hat Enterprise Linux Extended Update Support Subscription]
+
+:sat6x_filters: https://access.redhat.com/solutions/1564953[How do content filters work in Satellite 6]
+
+:sat6x_multi_ak: https://access.redhat.com/solutions/2037883[How to use multiple activation keys]
+
+:sat6x_soe: https://access.redhat.com/articles/1585273[10 Steps to Build a Standard Operating Environment]
+
+
+:sat6x_debug_log: https://access.redhat.com/solutions/1155573[Key log files and how to enable debug logging]
+
+:sat6x_foreman_debug: https://access.redhat.com/solutions/2252291[How to enable selective debug logging in foreman/katello]
+
+// Other Docs
+
+:sat6x_katello: https://theforeman.org/plugins/katello/index.html[Katello Documentation]
+
+:sat6x_foreman: http://theforeman.org/[Foreman Documentation]
+
+:sat6x_puppet_forge: https://forge.puppet.com/[Puppet Forge]
+
+:sat6x_puppet_docs: https://docs.puppet.com/[Puppet Documentation]
+
+:sat6x_foreman_template: http://projects.theforeman.org/projects/foreman/wiki/templatewriting[Template Writing]
+
+:sat6x_foreman_dynamic_disk_part: http://projects.theforeman.org/projects/foreman/wiki/Dynamic_disk_partitioning[Dynamic Disk Partitioning]
+
+:sat6x_erb_lang: http://www.stuartellis.eu/articles/erb/[ERB Language]
+
+:sat6x_rh_docs: https://docs.redhat.com/[All Red Hat Documentation]
+
+:sat6x_rh_partners: http://www.redhat.com/partners[Red Hat Partners]
+
+:sat6x_rh_hcl: https://hardware.redhat.com/[Hardware Compatibility List]
+
+:sat6x_rhel8_appstreams: https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/8.2_release_notes/distribution-of-content-in-rhel-8#application_streams
+
+:sat6x_rhel8_appstreams_lc: https://access.redhat.com/support/policy/updates/rhel8-app-streams-life-cycle
+
+:sat6x_reporting_gettingstarted: https://www.redhat.com/en/blog/getting-started-satellite-65-reporting-engine[Getting started with the Satellite 6.5 reporting engine]
+
+:sat6x_reporting_openscap_with_ansible: https://www.redhat.com/en/blog/deploying-openscap-satellite-using-ansible[Deploying OpenScap in Satellite using Ansible]
+
+:sat6x_reporting_engine_overview: https://www.youtube.com/watch?v=sBciejh1G80[Satellite Reporting Engine Overview]
+
+:sat6x_reporting_compliance: https://access.redhat.com/documentation/en-us/red_hat_satellite/6.7/html/administering_red_hat_satellite/chap-red_hat_satellite-administering_red_hat_satellite-security_compliance_management#compliance-report_admin[Compliance Report]
+
+// End of Satellite-6x content variables

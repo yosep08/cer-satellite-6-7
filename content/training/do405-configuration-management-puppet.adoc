@@ -1,0 +1,40 @@
+= Configuration Management with Puppet (DO405)
+
+
+
+*Course description*
+
+Configure Red Hat Enterprise Linux hosts in DevOps environment using Puppet
+
+Configuration Management with Puppet (DO405) is designed for system administrators and cloud administrators who intend to implement Puppet as integrated with Red Hat(R) products in an operations environment or a cloud computing environment.
+
+This course is on Red Hat Enterprise Linux(R) 7 and Red Hat Satellite 6. 
+
+This course will cover case studies involving Red Hat products that use Puppet: Red Hat Enterprise Linux  OpenStack(R) Platform and Red Hat Satellite. Key Puppet concepts will be introduced, including language constructs, modules, classes, and resources. This course will cover the deployment of Puppet server on Red Hat Enterprise Linux and the deployment of Puppet as a client.
+
+*Course summary*
+
+
+* Write Puppet manifests that utilize a variety of Puppet DSL resources.
+* Deploy a GIT repository and use it to maintain Puppet modules.
+* Write Puppet modules that deploy and configure network services.
+* Configure a Puppet master and client nodes.
+* Implement Puppet configuration management in a DevOps environment.
+* Use Red Hat Satellite 6 to manage client configurations with Puppet.
+
+
+*Audience for this course*
+
+
+System administrators and cloud administrators responsible for the management of systems and cloud client systems on either Red Hat Enterprise Linux OpenStack Platform or Red Hat Satellite
+
+
+*Prerequisites for this course*
+
+
+Have received an Red Hat Certified Engineer (RHCE(R))  certification or have equivalent experience 
+
+
+
+For full details, or to enroll: +
+https://www.redhat.com/en/services/training/do405-configuration-management-puppet

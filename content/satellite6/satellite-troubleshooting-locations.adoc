@@ -1,0 +1,102 @@
+<<<
+
+= Troubleshooting
+
+== Red Hat Satellite
+
+=== Log files
+
+Check the below log files when troubleshooting issues with Satellite. 
+
+* /var/log/foreman/production.log
+* /var/log/foreman-proxy/proxy.log
+* /var/log/httpd/*
+
+=== Debug Logging
+
+To enable debug logging: 
+
+. Log into the {sat} server command-line via SSH.
+
+. To enable debugging logging level for all components:
++
+[source,bash]
+----
+hammer admin logging --all --level-debug
+----
++
+[TIP]
+====
+Debugging logging can be enabled for each component individually. Use `hammer admin logging --list` for
+a list of available components
+====
+
+. Restart the {sat} services
++
+[source,bash]
+----
+satellite-maintain service restart
+----
++
+[NOTE]
+====
+`katello-service restart` can also be used to restart the {sat} processes, but 
+`satellite-maintain` is the preferred method.
+====
+
+Reference:
+
+* {sat6x_debug_log}
+* {sat6x_foreman_debug}
+
+== Managed hosts
+
+After installation (with kickstart), the following files are available to check what happened during the installation:
+
+* /root/anaconda-ks.cfg
+* /root/install.post.log
+* /root/install.postnochroot.log
+* /root/original-ks.cfg
+
+In addition, the following log files can be checked for more information:
+
+* /var/log/messages
+* /var/lib/gofer
++
+[NOTE]
+====
+`/var/lib/gofer` will only be present if the `katello-agent` RPM has been installed. It is 
+no longer recommended to install this RPM. Instead the `katello-host-tools` RPM should be installed.
+====
+
+* /var/lib/puppet/certs
+
+== Red Hat documentation
+
+The following documentation is available on the Red Hat portal.
+
+* {sat6x_rh_docs}
+* {sat6x_rh_partners}
+* {sat6x_rh_hcl}
+* {sat6x_docs_list}
+
+Red Hat has created a solution guide called {sat6x_soe}, which
+describes all parts of the implementation and usage of a Red Hat Satellite 6.
+
+==  Open Source resources
+
+Katello/Foreman:
+
+* {sat6x_katello}
+* {sat6x_foreman}
+* {sat6x_foreman_template}
+* {sat6x_foreman_dynamic_disk_part}
+
+Puppet:
+
+* {sat6x_puppet_docs}
+* {sat6x_puppet_forge}
+
+Other links:
+
+* {sat6x_erb_lang}

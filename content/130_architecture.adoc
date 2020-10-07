@@ -1,0 +1,20 @@
+////
+Purpose
+-------
+In the "Base" directory, this section is a placeholder which is to be
+overwritten by architecture specific to the product or products being
+delivered.
+
+If "TODO" appears in your document after the init script has been run, then your product directory is missing a corresponding "architecture.adoc" which should be implemented to provide a basic architecture framework for that product.
+////
+
+Below contain the architecture diagram and information of the environment.
+
+= High level Architecture diagram
+
+image::architecture.jpg[pdfwidth=90%]
+
+= Environment Setup
+Steps to prepare or create the environment for the proposed architecture
+
+content::001_spesification_server.adoc[leveloffset=+3]

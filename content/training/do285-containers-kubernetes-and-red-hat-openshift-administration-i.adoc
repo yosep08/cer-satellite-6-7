@@ -1,0 +1,50 @@
+= Containers, Kubernetes, and Red Hat OpenShift Administration I (DO285)
+
+
+
+*Course description*
+
+Learn to build and manage Linux containers and configure and manage an OpenShift cluster
+
+Containers, Kubernetes, and Red Hat OpenShift Administration I (DO285) helps you build core knowledge in building and managing Linux(R) containers and Red Hat(R) OpenShift(R) Container Platform. This hands-on, lab-based course shows you how to deploy sample applications to either a local container runtime or an OpenShift cluster, as well as how to configure and manage OpenShift clusters. If you’re a developer, administrator or site reliability engineer, you will benefit from learning these skills.
+
+This course is based on Red Hat OpenShift Container Platform 4.2 and combines the content from Introduction to Containers, Kubernetes, and Red Hat OpenShift (DO180) and Red Hat OpenShift Administration I (DO280).
+
+*Course content summary*
+
+
+* Learn about container and OpenShift architecture.
+* Manage containers and container images.
+* Create custom container images.
+* Deploy and troubleshoot applications on OpenShift.
+* Configure authentication using local users.
+* Control access to projects using role-based access control.
+* Configure service and container networking.
+* Configure pod scheduling using labels and selectors.
+* Limit compute resource usage.
+* Scale a cluster.
+* Monitor cluster events and alerts.
+
+
+*Audience for this course*
+
+
+* System and software architects interested in understanding features and functionality of an OpenShift cluster
+* System administrators who want to learn about the initial establishment of a cluster
+* Cluster operators responsible for the ongoing maintenance of a cluster
+* Site reliability engineers interested in the ongoing maintenance and troubleshooting of a cluster
+
+
+*Prerequisites for this course*
+
+
+Become a Red Hat Certified System Administrator (RHCSA), or demonstrate equivalent Red Hat Enterprise Linux system administration experience
+
+
+*Technology considerations*
+
+Internet access is required.	
+
+
+For full details, or to enroll: +
+https://www.redhat.com/en/services/training/do285-containers-kubernetes-and-red-hat-openshift-administration-i

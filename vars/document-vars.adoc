@@ -1,0 +1,35 @@
+// --------------------------------
+// Document Information
+// --------------------------------
+:toc-title: Table of Contents
+
+:subject: Consulting Engagement Report
+:description: Deployment Satellite 6.7
+
+:customer: Security Bank
+:cust: SBC
+
+:confidentiality: Confidential
+
+:projectmanager: Csaba Eber
+
+// these are required for the support chapter.
+:custgss: <customer_portal_account_name>
+:nogss: <customer_portal_account_number>
+
+
+// docstatus - indicates where in the lifecycle CER is (draft, in-progress, finish)
+:docstatus: in-progress
+
+
+ifeval::[ "{docstatus}" == "draft"]
+:page-background-image: image:draft.png[]
+endif::[]
+
+
+:revnumber: {gitdate}
+
+
+// --------------------------------
+// Other Vars
+// --------------------------------

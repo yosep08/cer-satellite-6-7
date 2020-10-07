@@ -1,0 +1,116 @@
+include::vars/render-vars.adoc[]
+include::vars/document-vars.adoc[]
+include::vars/redhat-vars.adoc[]
+include::content/000_vars.adoc[]
+include::locale/attributes.adoc[]
+
+= {subject}: {customer} - {description}
+
+<<<
+toc::[]
+
+<<<
+include::content/legal-approved/preface.adoc[leveloffset=+1]
+
+<<<
+== Project Information
+
+=== Originator
+include::content/010_originator.adoc[leveloffset=+3]
+
+=== Owner
+include::content/020_owner.adoc[leveloffset=+3]
+
+=== Document Conventions
+include::content/030_document-conventions.adoc[leveloffset=+3]
+
+=== Additional Copies
+include::content/040_additional-copies.adoc[leveloffset=+3]
+
+=== Participants of the Engagement
+
+==== Red Hat
+include::content/050_red-hat-participants.adoc[leveloffset=+4]
+
+==== {customer}
+include::content/060_customer-participants.adoc[leveloffset=+4]
+
+<<<
+== Executive Summary
+include::content/070_executive-summary.adoc[leveloffset=+2]
+
+<<<
+== Overview
+
+=== About {cust}
+include::content/080_about-the-customer.adoc[leveloffset=+3]
+
+
+=== Purpose And Engagement Approach
+include::content/100_purpose-and-approach.adoc[leveloffset=+3]
+
+=== Scope Summary
+include::content/110_scope-summary.adoc[leveloffset=+3]
+
+<<<
+== Implementation Details
+
+=== Daily Journal
+include::content/120_daily-journal.adoc[leveloffset=+3]
+
+<<<
+=== Deployed Architecture
+include::content/130_architecture.adoc[leveloffset=+3]
+
+<<<
+=== Technical Implementation
+include::content/140_implementation.adoc[leveloffset=+3]
+
+<<<
+=== Validation Procedure
+include::content/150_validation.adoc[leveloffset=+3]
+
+<<<
+=== Summary of Knowledge Transfer
+
+<<<
+=== Challenges, Resolutions, and Recommendations
+
+<<<
+== Recommendations
+
+=== Technical Next Steps
+
+=== Relevant Training
+include::content/190_recommendations-relevant-training.adoc[leveloffset=+3]
+
+=== Other
+
+<<<
+[appendix]
+== Glossary
+include::content/210_glossary.adoc[leveloffset=+2]
+
+<<<
+// It is expected that anyone using additional-appendices.adoc will include one or more [appendix] blocks
+include::content/220_additional-appendices.adoc[leveloffset=+1]
+
+<<<
+[appendix]
+== Relevant Links
+include::content/230_relevant-links.adoc[leveloffset=+2]
+
+<<<
+[appendix]
+== Statement of Work
+
+<<<
+[appendix]
+== Revisions
+include::content/250_revisions.adoc[leveloffset=+2]
+
+<<<
+include::content/legal-approved/subscriptions.adoc[leveloffset=+1]
+
+<<<
+include::content/legal-approved/support.adoc[leveloffset=+1]

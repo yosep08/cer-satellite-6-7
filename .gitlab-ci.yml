@@ -1,0 +1,13 @@
+variables:
+  GIT_SUBMODULE_STRATEGY: recursive
+
+# this GitLab CI file is meant for use with client CERs
+generate_pdf:
+  stage: build
+  image: quay.io/redhat-cop/ubi8-asciidoctor:v1.3
+  script: "./generate-pdf"
+  artifacts:
+    name: "CER PDF"
+    expire_in: 2 weeks
+    paths:
+    - "*.pdf"

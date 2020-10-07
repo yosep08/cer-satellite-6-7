@@ -1,0 +1,357 @@
+<<<
+
+= Content Management
+
+Most content management concepts are included in the following diagram:
+
+.Config management
+image::conf-management-design.png[pdfwidth=90%]
+
+== Concepts
+
+.Content Concepts
+[cols=2,cols="1,5",options=header,width=99%]
+
+|===
+<|Concept <|Description
+
+|Life Cycle Environment
+|A container for content view versions, representing steps in the life cycle environment path (for example: DEV - TEST - QA - PROD) Content moves through life cycle environments by publishing and promoting content view
+
+|Sync Plan
+|Scheduled synchronization of Products
+
+|Library
+|A container for content from all synchronized repositories on the Satellite Server.
+
+|Product
+|A collection of content repositories. Products are either provided by Red Hat CDN or created by the Satellite administrator to group custom repositories.
+
+|Repositories
+|Provides storage for a collection of content: either RPM packages, Puppet modules or generic files.
+
+|Content View
+|A subset of Library content created by intelligent filtering. Content Views can be published. Publishing a content view will create a new version.
+
+
+|===
+
+NOTE: A repository can receive content from various sources: the Red Hat CDN, online yum repositories from third parties, local file systems, manual upload, etc.
+
+.Publish and Promote
+image::conf-management-design-2.png[pdfwidth=80%]
+
+Specific versions of one or more Content Views can be combined into a single Composite Content View.
+
+NOTE: Clients system can only be placed in *one* (1) Life Cycle Environment and *one* (1) Content View or Composite Content View. This exposes the content present in the version that is promoted to that Life Cycle Environment available to that client system.
+
+== Life Cycle Environments
+
+Application life cycles are divided into life cycle environments which represent each stage of the application life cycle. Life cycle environments are linked to form an environment path. You can promote content along the environment path to the next life cycle environment when required. For example, if development ends on a particular version of an application, you can promote this version to the testing environment and start development on the next version.
+
+Life Cycle Environments need to reflect {cust}'s environments; it is likely different LCEs need to be setup for different teams.
+
+=== Recommended Life Cycle Environment setup.
+
+TIP: Three different patch cycles will need to be configured in at least three Life Cycle Environments.
+
+[cols=2,cols="1,5",options=header,width=99%]
+
+|===
+<|LCE <|Patch cycle
+
+|'Latest'
+|Weekly
+
+|Monthly
+|Monthly
+
+|Quarterly
+|Quarterly
+
+|===
+
+image::satellite_6_life_cycle.png[pdfwidth=80%]
+
+Reference:
+
+* {sat6x_inst_plan_lc}
+
+== Sync plans
+
+A synchronization plan provides a scheduled mechanism to mirror content from external resources into the Red Hat Satellite 6 Library.
+Different synchronization types can be set per repository.
+
+TIP: Use a weekly sync plan, which runs on Monday morning, as this will not coincide with maintenance windows that might possibly occur during the weekend.
+
+=== Synchronization Types
+{cust} will need to set the synchronization type per Red Hat repository.
+
+.Sync options
+. Immediate +
+All content must be downloaded before publishing the repository and will take up space (and time) to do so.
+. Background +
+A download policy that actively retrieves content units in the background after a publish has been performed, so content is available for managed hosts when required through the content-view.
+. On-Demand +
+A download policy that only saves a content unit locally after a client has requested that content unit; {sat} basically is a forwarding proxy for the managed host but stores the content once it has been downloaded.
+
+Starting with {sat} 6.3 the default download policy has been set to On-Demand. This is called 'lazy sync'.
+
+This can be configured in many ways and depends highly on disk space availability and network throughput. If disk space is 'infinite' then {cust} could set everything to 'Immediate', increasing the number of packages that are distributed throughout the network.
+
+TIP: A recommended way of setting this up, would be to have {sat} sync 'Immediate' with the Red Hat CDN, so all packages are available within {cust}'s environment, then the Capsules can be set to download 'On-Demand'. This reduces synchronization load and disk space requirements on the Capsule servers.
+
+== Red Hat Repositories
+
+{cust} has need to keep certain repositories pinned to a {rhel} minor release (for instance RHEL 7.3).
+These can be selected in the Repository selection menu and support can be extended far beyond normal support levels by purchasing the EUS subscription.
+
+TIP: Separate (Composite) Content Views need to be created and maintained for pinned minor releases. Patching procedures need to be adapted.
+
+Reference:
+
+* {sat6x_eus_sub}
+
+== Local Repositories
+
+Third party products are also be added to the content views, all required content will then be available to managed hosts for which the Content View is selected.
+
+TIP: At {cust} custom local repositories exist, these can be maintained by uploading RPM files with the Hammer CLI tool. The entire process of repository management and content view publication can be automated and integrated in {twr} workflows by using the Hammer CLI.
+
+Reference:
+
+* {sat6x_ref_hammer}
+
+
+== Host Grouping Concepts
+
+Apart from the physical topology of Capsule Servers, Red Hat Satellite provides several logical units for grouping hosts. Hosts that are members of those groups inherit the group configuration.
+
+The main logical groups in Red Hat Satellite are:
+
+.Host Grouping Concepts
+[cols=2,cols="1,5",options=header,width=99%]
+
+|===
+<|Concept <|Description
+|Organizations
+|The highest level logical groups for hosts. Organizations provide a strong separation of content and configuration. Each organization requires a separate Subscription Manifest and can be thought of as a separate virtual instance of a Satellite Server. _Avoid_ the use of organizations if a lower level host grouping is applicable.
+
+|Locations
+|Grouping of hosts that should match the physical location. Locations can be used to map the network infrastructure to prevent incorrect host placement or configuration. For example, you cannot assign a subnet, domain, or compute resources directly to a Capsule Server, only to a location.
+
+|Host groups
+|Main carriers of host definitions including assigned Puppet classes, Content View, or operating system. Find the complete list of host group parameters in Parameters in the Puppet Guide. It is recommended to configure the majority of settings at the host group level instead of defining hosts directly. Configuring a new host then largely becomes a matter of adding it to the right host group. As host groups can be nested, you can create a structure that best fits your requirements.
+
+|Host collections
+|A host registered to the Satellite Server for the purpose of subscription and content management is called content host. Content hosts can be organized into host collections, which enables performing bulk actions such as package management or errata installation.
+
+|===
+
+NOTE: Locations and host groups can be nested, organizations and host collections are flat.
+
+== Content Views
+
+Software is provided to systems using a named Content View (CV) or a Composite Content View (CCV).
+A Content View is a grouping of RPM repositories (optimized through filtering). It can contain a mix of local, remote and Red Hat repositories.
+
+After a Content View is published, it can move from one environment to the next in an application life cycle chain. This is a process called promotion. Promotion is an important concept to understand because it is the basis for managing content across an application life cycle.
+
+=== Composite Content Views
+
+An advanced feature that allow for much greater flexibility are Composite Content Views or CCV. Specific versions of one or more Content Views can be combined into a single Composite Content View. Composite Content Views are handled the same way as Content Views. They can be published, creating a new version and they too can be promoted along Life Cycle Environment Paths.
+
+NOTE: Remember that a client system can only have access to one (1) Content View *or* one (1) Composite Content view at any given time.
+
+== Standard Operating Environment
+
+Within a Standard Operating Environment (SOE) the core build should define the smallest common denominator for software and configurations shared across all (or at least most) of {cust}'s systems.
+
+Red Hat recommends to build Content Views accordingly, so:
+
+1) Content View that holds all repositories for the core build. +
+2) Content View that holds application specific repositories. +
+3) Composite Content View combining 1) and 2). +
+
+For example:
+
+*Core Build* +
+* Red Hat Enterprise Linux. +
+* Red Hat Enterprise Linux Extras. +
+* Red Hat Enterprise Linux Optional. +
+* Red Hat Enterprise Linux Supplementary. +
+* Red Hat Software Collections. +
+* Red Hat Satellite 6 Tools. +
+* CommVault Backup Agent. +
+* OMD Monitoring. +
+
+*Application A Specific* +
+* EPEL. +
+* MariaDB. +
+
+*Application B Specific* +
+* Gitlab. +
+* PostgreSQL
+
+*Application C Specific* +
+* SAP. +
+* Oracle JAVA. +
+* Oracle DB. +
+* EPEL. +
+
+With these building blocks {cust} can easily stack application specific CVs on top of the core build CV to create the Composite Content View that will be available to a client system.
+The speed of updating and patching could be different for every application, so different versions of the Content View are going to be active.
+
+TIP: Create 'core' Content Views for all {rhel} versions in use. +
+If applications or SLA's require the operating system to keep a certain minor release, this needs to be specified both in the Repository settings and Content View versions.
+
+For example:
+
+[cols=2,cols="1,5",options=header,width=99%]
+|===
+<|CV <|Description
+
+|cv-os-rhel6-latest
+|core content view for RHEL6 updated to latest minor release
+
+|cv-os-rhel6.9-EUS
+|core content view for RHEL6.9
+
+|cv-os-rhel7-latest
+|core content view for RHEL7 updated to latest minor release
+
+|cv-os-rhel7.3-EUS
+|core content view for RHEL7.3
+
+|===
+
+== Filtering
+
+=== Filtering: Content Views
+
+Filtering Content Views is one of the most powerful aspects of {sat} content management.
+
+First some general rules.
+
+When you add an include filter:
+
+. All content is excluded, except for the included content
+. You can keep adding include filters until you reach the desired goal
+
+When you add an exclude filter:
+
+. All content is included, except for the excluded content
+. You can keep adding exclude filters until you reach the desired goal
+
+NOTE: If you use both include and exclude filters, the include filters take precedence.
+
+=== Filtering: Patch Management
+
+The name of the filter could be `to_date_<yyyymmdd>`. Each time a new patch cycle begins, the filter date will be *changed*.
+
+The name of the filter will be changed as well to make visible which date for the filter is being used. This filters applies to the {rhel} channels.
+
+When a new version of a CV is published into the Library the current filters are applied and a new *version* of the content view is made available. The description of the content view should also reflect what the _patch level_ of the version is (i.e. “`Q2-2021`” or “`errata up to 20191201`”).
+
+=== Filtering: Recommended approach
+
+.Recommended approach
+. First include all packages without errata. (This step is recommended so you don't create dependency issues). +
+. Include errata up until a certain date, synchronous with {cust}'s patch cycle, or maintenance windows. +
+. Optional push out any errata and/or packages that cause problems by using an exclude filter. +
+
+.Base filter
+image::cv-filter-include-all.png[pdfwidth=75%]
+
+The base filter is applied to the {rh} repositories, as {rh} publishes errata.
+
+.Date filter
+image::to_date_filter.png[pdfwidth=75%]
+
+The date filter is an errata date-and-time filter, which is then also applied to the {rh} packages. This way, a specific release of {rhel} 7 can be created, without taking the minor releases into account.
+
+==== {rhel} 8
+When using {sat} to manage {rhel} **8** one needs to consider the link:{sat6x_rhel8_appstreams}[_AppStreams_]. With AppStreams {rh} has devised a way to have multiple versions of user space components available which follow a different link:{sat6x_rhel8_appstreams_lc}[life cycle] then the core operating system packages. This way, one can install for instance  PostgreSQL 8 or PostgreSQL10, supported by Red Hat, on {rhel} 8.
+
+The base/date filter setup for older {rhel} versions will not be sufficient.
+
+Therefore, when creating a CV for RHEL8, the following has to be done. Don't forget to add the Kickstart repositories for both Base and Appstream repositories, otherwise provisioning will fail later.
+
+First, enable the "Solve dependencies" flag on the CV:
+
+.Solve dependencies
+image::sat6-rhel8-solve-deps.png[pdfwidth=75%]
+
+Then, add the {rhel} 8 repositories needed.
+
+Next, add a base, a date _and_ a AppStreams filter.
+
+Ensure the base and data filters do not hit the AppStreams.
+
+.Base
+image::sat6-rhel8-filter-base.png[pdfwidth=75%]
+
+.Base repositories
+image::sat6-rhel8-filter-base-repos.png[pdfwidth=75%]
+
+.Date
+image::sat6-rhel8-filter-date.png[pdfwidth=75%]
+
+.Date repositories
+image::sat6-rhel8-filter-date-repos.png[pdfwidth=75%]
+
+Then, also add a filter for AppStreams. Make this an _exclude_ filter, include _everything_ by excluding _nothing_:
+
+.AppStreams exclude, nothing is selected.
+image::sat6-rhel8-filter-appstream.png[pdfwidth=75%]
+
+Also, ensure these have the correct repositories, so **only** the AppStream related repositories.
+
+.AppStreams repos
+image::sat6-rhel8-filter-appstream-repos.png[pdfwidth=75%]
+
+Reference:
+
+* {sat6x_filters}
+
+
+== Activation Keys
+
+Activation keys are used to simplify the registration and content selection process of systems to {sat}.
+
+Clients can use Activation Keys by invoking subscription-manager, the tool used to subscribe systems to {sat}. Subscription manager is used both for migrating existing systems to Satellite and during provisioning of existing systems. Multiple activation keys can be specified during subscribing.
+
+If you change settings in an existing Activation Key, the changes are not automatically propagated to the clients that were previously registered with that key. This is a common source of confusion. Activation Keys define what subscriptions and repositories should be attached to a machine at registration time. They have no role after registration!
+
+Each activation key can define one or more of the following aspects of the registration process:
+
+. Consume the correct (amount of) subscription(s) for that system. +
+. Enable (and/or disable) the correct repositories based on these subscriptions. +
+. Select the correct Life cycle environment where the system is placed in. +
+. Based on the selected life cycle environment, select the correct (Composite) Content View. +
+. Membership to one or more Host Collections. +
+. A limit of hosts that are allowed to use the, to prevent a VM sprawl in a life cycle.
+
+=== Recommended Approach
+
+When activation keys are used, it is possible to select multiple keys.
+This is a way to split out Red Hat subscriptions and custom subscriptions for custom products.
+
+A simplified example:
+
+1) Activation key with no subscriptions defined and auto-attach to 'yes': this will subscribe a {vm} using the VDC subscription. +
+2) Activation key that subscribes the client system to a Composite Content View, with the correct subscriptions and repositories enabled, in the 'test' environment. +
+
+[source]
+----
+subscription-manager register --org example-org --activationkey ak-key1,ak-key2
+----
+
+This will get the subscription from both the activation keys, however, the preference for the Content View and life cycle environment of the last key will be used by the system.
+
+
+NOTE: Custom Products will always auto-attach regardless of auto-attach settings.
+
+References:
+
+* {sat6x_multi_ak}

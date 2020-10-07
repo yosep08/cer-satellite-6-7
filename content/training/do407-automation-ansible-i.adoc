@@ -1,0 +1,41 @@
+= Automation with Ansible (DO407)
+
+
+
+*Course description*
+
+Learn how to automate Linux system administration tasks with Ansible
+
+Automation with Ansible (DO407) is designed for Linux system administrators and developers who need to automate provisioning, configuration, application deployment, and orchestration. You will learn how to install and configure Ansible on a management workstation and prepare managed hosts for automation.
+
+This course is based on Red Hat(R) Ansible Engine 2.7 and Red Hat Enterprise Linux 7.3.
+
+Incorporating IT automation is key to managing large numbers of systems and applications efficiently and consistently at scale. In this course, you will write Ansible playbooks to automate tasks, and you will run them to ensure servers are correctly deployed and configured. You will also explore examples of how to approach the automation of common Linux system administration tasks.
+The material covered in this curriculum is now included within our newly released Red Hat System Administration III: Linux Automation with Ansible (RH294)course, which covers how to use Red Hat Ansible Automation to automate across different functions. If you are interested in learning how to scale infrastructure efficiently, begin your journey with Linux automation today.
+
+*Course content summary*
+
+
+* Install Ansible/Red Hat Ansible Engine on control nodes.
+* Create and update inventories of managed hosts and manage connections to them.
+* Automate administration tasks with Ansible playbooks and ad hoc commands.
+* Write effective Ansible playbooks at scale.
+* Protect sensitive data used by Ansible with Ansible Vault.
+* Reuse code and simplify playbook development with Ansible roles.
+
+
+*Audience for this course*
+
+This course is designed for Linux system administrators, DevOps engineers, infrastructure automation engineers, and systems design engineers. The curriculum is particularly geared toward those responsible for automation of configuration management; consistent and repeatable application deployment; provisioning and deployment of development, testing, and production servers; and integration with DevOps CI/CD workflows.
+
+*Prerequisites for this course*
+
+
+Be a Red Hat Certified System Administrator (RHCSA), or demonstrate equivalent Red Hat(R) Enterprise Linux(R) knowledge and experience
+Being a Red Hat Certified Engineer (RHCE) may be beneficial
+
+
+
+
+For full details, or to enroll: +
+https://www.redhat.com/en/services/training/do407-automation-ansible-i

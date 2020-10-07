@@ -1,0 +1,71 @@
+#!/bin/env bash
+
+training_lang=${training_lang:-en}
+training_dir=../
+
+# TODO: can't use other languages until the uri loop is localized
+case ${training_lang} in
+  en )
+    taxonomy_training=Course
+    cer_locale=en_US
+    ;;
+  de )
+    taxonomy_training=Kurs
+    ;;
+  pt-br|es )
+    taxonomy_training=Curso
+    ;;
+  fr )
+    taxonomy_training=Cours
+    ;;
+  it )
+    taxonomy_training=Adedicato
+    ;;
+  zh )
+    taxonomy_training=课程
+    ;;
+  ko )
+    taxonomy_training=과정
+    ;;
+  ja )
+    taxonomy_training=コース
+esac
+ 
+if [ -d canned-content/${cer_locale}/Base/training ]; then
+  echo updating canned-content training
+  training_path=canned-content/${cer_locale}/Base/training
+elif [ -d content/training ]; then
+  echo updating initialized CER training
+  training_path=content/training
+else
+  echo cannot find training directory, please run from CER root directory
+  exit 1
+fi
+
+# there were 4 pages of courses when this was written, ymmv
+for page in {0..3}; do
+  TRAINING_URI="https://www.redhat.com/${training_lang}/services/training/all-courses-exams?page=${page}&f%5B0%5D=taxonomy_training%3A${taxonomy_training}"
+  curl -s "${TRAINING_URI}" | sed -n 's/.*class="rh-cta-link".*href="\([^\"]\+\)" .*/\1/p' | grep -v "https\|all-courses-exams"
+done | sort -u > ${training_path}/${training_lang}-training.lst
+
+# pull and parse the html course pages
+# some course pages may not parse very well so they'll need some touch up
+for uri in `cat ${training_path}/${training_lang}-training.lst`; do
+  doc=${uri##*/}
+  echo - updating ${doc}
+
+  curl -s -o "${training_path}/${doc}.html" "https://www.redhat.com/${uri}"
+  sed -n 's/.*<title>\s*\(.*\)\s*<\/title>.*/= \1/p' ${training_path}/${doc}.html > ${training_path}/${doc}.adoc
+  echo >> ${training_path}/${doc}.adoc
+
+  awk '/rc-training--tab-header.*Overview/{flag=1; next} /rc-training--tab-header.*Outline/{flag=0} flag' ${training_path}/${doc}.html | sed -e 's/<[\/]\?h[123]>/\*/g' -e 's/<li>/\* /' -e 's/<[^>]\+>//g' -e 's/^\s\+//' -e 's/\&reg[;]\?/(R)/g' -e 's/\&trade[;]\?/(TM)/g' -e 's/™/(TM)/g' -e 's/®/(R)/g' -e 's/\&nbsp[;]\?/ /g' >> ${training_path}/${doc}.adoc
+
+  echo -e "\nFor full details, or to enroll: +\nhttps://www.redhat.com${uri}" >> ${training_path}/${doc}.adoc
+  rm ${training_path}/${doc}.html
+done
+
+rm ${training_path}/${training_lang}-training.lst
+
+echo training content updated. This script is WIP - please check course docs in ${training_path} before using
+
+

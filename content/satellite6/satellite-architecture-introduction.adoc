@@ -1,0 +1,35 @@
+= Satellite Architecture
+
+image::coat-of-arms-2.png[pdfwidth=60%]
+
+Red Hat Satellite is a system management solution that enables {cust} to deploy, configure, and maintain Red Hat systems across physical and virtual environments.
+
+Satellite provides provisioning, remote management and monitoring of multiple Red Hat Enterprise Linux deployments with a single, centralized tool.
+
+Satellite synchronizes content from Red Hat Customer Portal and other sources, and provides functionality including fine-grained life cycle management, user and group role-based access control, integrated subscription management, as well as advanced GUI, CLI, or API access.
+
+A Capsule Server mirrors content from Red Hat Satellite Server to facilitate content federation across various geographical locations. Host systems can pull content and configuration from the Capsule Server in their location and not from the central Satellite Server. The Capsule Server also provides localized services such as Puppet Master, DHCP, DNS, or TFTP. Capsule Servers assist {cust} in scaling the Satellite environment.
+
+A Satellite implementation provides five (5) basic functions:
+
+. *Subscription Management*. Satellite is able to fully control and report subscription usage. Satellite can be scaled out using capsules that provide for scaling a single Satellite implementation to thousands of client systems on various network topologies.
+. *Content Management*. This provides for lifecycle management of systems and patch management.
+. *Provisioning Management*. Satellite gives the possibility to fully automate system provisioning, including {vm} creation, DNS, DHCP and Realm setup.
+. *Configuration Management*. This is based on the popular Puppet tooling. It provides for very strong and flexible system setup and configuration and prevents configuration drift, one of the main pain points in enterprise environments.
+. *Integrations*. Satellite integrates with other Smart Management products, such as Red Hat Insights and Red Hat Ansible Tower.
+
+Satellite can be partitioned to facilitate multiple organizations and can be made fully aware of locations; it also has an extended RBAC implementation.
+
+Red Hat has created a solution guide called 10 Steps to Build a Standard Operating Environment, which describes all parts of the implementation and usage of {sat}. It can be found in the referenced document.
+
+Reference:
+
+10 Steps to Build an SOE: How Red Hat Satellite 6 Supports Setting up a Standard Operating Environment
+
+* https://access.redhat.com/articles/1585273
+
+<<<<
+
+.High-level architecture of Red Hat Satellite 6
+
+image::satarch.png[pdfwidth=90%]

@@ -1,0 +1,49 @@
+= Automation with Ansible and Ansible Tower (DO410)
+
+
+
+*Course description*
+
+Automation with Ansible and Ansible Tower
+
+Automation with Ansible and Ansible Tower (DO410) teaches you how to develop standardized automation of the enterprise IT environment in order to improve operational efficiency. You will learn how to use Ansible for automation, configuration, provisioning, and management, as well as how to use Red Hat(R) Ansible Tower to centrally manage Ansible at an enterprise scale.
+
+This course combines the content from Automation with Ansible (DO407) and Automation with Ansible II: Ansible Tower (DO409), and is based on Ansible 2.7 and Ansible Tower 3.3.
+
+Through hands-on labs, you will learn to automate system administration tasks on managed hosts with Ansible, find out how to write Ansible playbooks to standardize task execution, and manage encryption for Ansible with Ansible Vault. This course will also teach you how to deploy and use Red Hat Ansible Tower to centrally manage existing Ansible projects, playbooks, and roles; perform basic maintenance and administration of the Ansible Tower installation; and configure users and teams and use them to control access to systems, projects, and other resources through role-based access controls. You will learn to use Ansible Tower's visual dashboard to launch, control, and monitor Ansible jobs; use the Ansible Tower application programming interface (API) to launch jobs from existing templates; automatically schedule Ansible jobs; and dynamically update host inventories.
+The course material covered in this curriculum is now included within our newly released Red Hat System Administration III: Linux Automation with Ansible (RH294)  and Advanced Automation: Ansible Best Practices (DO447) offerings. which cover how to use Red Hat Ansible Automation to automate across different functions. If you are interested in learning how to scale infrastructure efficiently, begin your journey with Linux automation today.
+*Course content summary*
+
+
+* Install and troubleshoot Ansible on central nodes and managed hosts.
+* Automate administration tasks with Ansible playbooks and ad hoc commands.
+* Write effective Ansible playbooks.
+* Protect sensitive data used by tasks with Ansible Vault.
+* Install and configure Ansible Tower for enterprise Ansible management.
+* Use Ansible Tower to control access to inventories and machine credentials by users and teams.
+* Create job templates in Ansible Tower to standardize playbook execution.
+* Launch playbooks and monitor and review job results with Ansible Tower.
+
+
+*Audience for this course*
+
+This course is designed for professionals responsible for automation of configuration management, application deployment, provisioning and deployment of servers, and integration with DevOps CI/CD workflows, including these roles:
+
+
+* Linux system administrators
+* DevOps engineers
+* Infrastructure automation engineers
+* Systems design engineers
+
+
+*Prerequisites for this course*
+
+
+Become a Red Hat Certified System Administrator, or demonstrate equivalent Red Hat Enterprise knowledge and experience
+Being a Red Hat Certified Engineer (RHCE) may be beneficial
+
+
+
+
+For full details, or to enroll: +
+https://www.redhat.com/en/services/training/do410-automation-ansible-and-ansible-tower

@@ -1,0 +1,99 @@
+<<<
+
+= Provisioning Design
+
+== Host Groups
+
+Host Groups are the construct which combine the building block feature of {sat} with Puppet. Even if configuration management is not applied through {sat}, a lot of selections and parameters can be set by using Host groups.
+
+Host groups can be set up in a hierarchical fashion with a parent child relation. Selections made for the parent are inherited by the child. The depth of the hierarchy (no. of levels) should be kept to a minimum.
+
+Host Groups can be nested. The parent would have specific settings which are inherited by the child, which can then have children of its own. There is no limit to the inheritance. It is custom to try to flatten the hierarchy as much as possible.
+
+What to define at which level is very specific for each environment. At the very least, a host group level for Lifecycle Environments is needed, as well as a host group level for unlocking the correct content view. These two levels should be in the upper part of the host group hierarchy as these unlock content of the correct version.
+
+Red Hat provides three layering suggestions, as depicted below.
+
+image::hostgroup-layering.png[pdfwidth=90%]
+
+TIP: The most commonly used hierarchy, is the one highlighted. With the LCE aligned with the host group structure.
+
+=== Adding Hosts to an IdM Host Group
+
+Red Hat Enterprise Linux Identity Management (IdM) supports the ability to set up automatic membership rules based on a system’s attributes. Red Hat Satellite’s realm feature provides administrators with the ability to map the Red Hat Satellite host groups to the IdM parameter "userclass" which allow administrators to configure automembership.
+
+When nested host groups are used, they are sent to the IdM server as they are displayed in the Red Hat Satellite User Interface. For example, "Parent/Child/Child".
+
+When a system is added to the Satellite Server’s `example_hostgroup_name` host group, it is automatically added to the Identity Management server’s "example_hostgroup_name" host group. IdM host groups allow for Host-Based Access Controls (HBAC), sudo policies and other IdM functions.
+
+Reference:
+
+* {sat6x_admin_ext_auth_host}
+
+== Provisioning
+
+Different provisioning scenarios can be implemented, each with their own pros and cons. It's up to {cust} to discuss these internally and decide which one fits the environment best.
+
+=== Use Case #1. 'All with Infra'
+
+. Satellite's API (or UI) is used to build a new host.
+. Trust on Satellite to provide the configuration defined for the host group used.
+. Use embedded puppet to configure the host
+
+Pros:
+
+* One stop shop, no extra components needed.
+* All preparation can be done via Satellite
+
+Cons:
+
+* Complexity in the Host Group tree.
+* Setup difficult, as importing and exporting contents has to be setup.
+* Likely: root level shell access needed.
+
+=== Adding Red Hat Ansible Tower
+
+==== Use Case #2. 'Just enough operating system'
+
+. Satellite's API (or UI) is used to build a new host.
+. Provisioning callbacks (a feature in Ansible Tower) allow the new host to initiate a playbook run against itself.
+. Host Groups provide variable that points to the desired Job Template in Ansible Tower.
+. Ansible Tower provides automation and configuration management.
+
+Pros: +
+
+* Push-button deployment.
+* No complexity in Host Group tree.
+* Application teams can create Playbooks for deployment.
+* All Playbooks stored in git.
+* No root level shell access needed.
+
+Cons: +
+
+* Ansible Tower is an additional product that requires a set of subscriptions.
+* Callback requires provisioned client to connect to API on Ansible Tower. +
+
+image::JeOS.png[pdfwidth=60%]
+
+==== Use Case #3 - Full Infrastructure-as-Code
+
+. Ansible Tower's API is used to trigger the process.
+. foreman-ansible modules are used to build a new host.
+. Variables set in Ansible Tower.
+. Ansible Tower provides automation and configuration management.
+
+Pros: +
+
+* Push-button deployment. +
+* All infrastructure and application configurations as Ansible Playbooks (IaC). +
+* All Playbooks stored in git. +
+* Delegation of tasks possible through Tower RBAC. +
+* Tower API provides deeper automation possibilities. +
+* No root level shell access needed. +
+
+Cons: +
+
+* Ansible Tower is an additional product that requires a set of subscriptions.
+* Connections to the host in isolated networks might prove tricky.
+
+image::IaC.png[pdfwidth=60%]

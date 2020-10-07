@@ -1,0 +1,44 @@
+= Red Hat System Administration II (RH134)
+
+
+
+*Course description*
+
+Focuses on the key tasks needed to become a full-time Linux administrator
+
+Red Hat System Administration II (RH134) builds upon and lends context to the foundational knowledge established in Red Hat System Administration I (RH124). This follow-on course demonstrates more detailed use cases for Red Hat(R) Enterprise Linux(R), preparing you for the Red Hat Certified System Administrator exam (EX200).
+
+This course is based on Red Hat Enterprise Linux 8.
+
+
+*Course content summary*
+
+
+* Install Red Hat Enterprise Linux using scalable methods
+* Access security files, file systems, and networks
+* Execute shell scripting and automation techniques
+* Manage storage devices, logical volumes, and file systems
+* Manage security and system access
+* Control the boot process and system services
+
+
+*Audience for this course*
+
+This course is geared toward Windows system administrators, network administrators, and other system administrators who are interested in supplementing current skills or backstopping other team members, in addition to Linux system administrators who are responsible for these tasks:
+
+* Configuring, installing, upgrading, and maintaining Linux systems using established standards and procedures
+* Providing operational support
+* Managing systems for monitoring system performance and availability
+* Writing and deploying scripts for task automation and system administration
+
+
+*Prerequisites for this course*
+
+
+Successful completion of Red Hat System Administration I (RH124) is recommended. Experienced Linux administrators seeking to accelerate their path toward becoming a Red Hat Certified System Administrator should start with the RHCSA Rapid Track course (RH199).
+
+
+
+
+For full details, or to enroll: +
+https://www.redhat.com/en/services/training/rh134-red-hat-system-administration-ii

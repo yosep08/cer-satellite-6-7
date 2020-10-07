@@ -1,0 +1,41 @@
+= Automation with Ansible II: Ansible Tower (DO409)
+
+
+
+*Course description*
+
+Take your automation to the next level with Red Hat Ansible Tower
+
+Automation with Ansible II: Ansible Tower (DO409) is designed for Ansible site administrators who need to automate tasks on large numbers of managed nodes with extended teams or are responsible for centrally coordinating and logging Ansible operations. You will learn how to install Red Hat(R) Ansible Tower, use the web interface to manage access to resources and hosts, and create templates to start Ansible jobs.
+
+This course is based on Red Hat Ansible Tower 3.3 and Red Hat(R) Ansible Engine 2.7. 
+
+In this course, you will configure and organize users into teams and assign permissions that allow them to review, use, or manage resources on Ansible Tower. You will also learn about advanced workflow management and receive a basic introduction to the Ansible Tower API.
+The material covered in this curriculum is now included within our newly released Advanced Automation: Ansible Best Practices (DO447)  course, which teaches you how to use Red Hat Ansible Automation to automate across different functions. If you are interested in learning best practices for scaling infrastructure efficiently, begin your journey with Linux automation today.
+
+*Course content summary*
+
+
+* Install Red Hat Ansible Tower.
+* Configure users and teams to access Ansible Tower resources using role-based access controls.
+* Use Ansible Tower to manage shared access to inventories and machine credentials.
+* Create job templates and workflow job templates to standardize playbook execution.
+* Launch playbooks and monitor and review job results using Ansible Tower.
+
+
+*Audience for this course*
+
+This course is designed for system administrators, DevOps engineers, release engineers, and other IT professionals. The curriculum is particularly geared toward those responsible for designing and implementing DevOps capabilities in complex multiple-application production environments; maintaining and enforcing continuous integration and continuous delivery (CI/CD) pipelines and tools; and centrally managing and controlling Red Hat(R) Ansible Automation at scale.
+
+*Prerequisites for this course*
+
+
+Successfully complete Automation with Ansible I (DO407), or demonstrate equivalent experience with Ansible, Ansible playbooks, and roles
+Be a Red Hat Certified Specialist in Ansible Automation, or demonstrate equivalent Ansible experience
+Be a Red Hat Certified System Administrator (RHCSA), or demonstrate equivalent Red Hat(R) Enterprise Linux(R) knowledge and experience
+Being a Red Hat Certified Engineer (RHCE) may be beneficial
+
+
+
+For full details, or to enroll: +
+https://www.redhat.com/en/services/training/do409-automation-ansible-ii-ansible-tower

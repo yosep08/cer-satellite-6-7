@@ -1,0 +1,42 @@
+= Red Hat OpenStack Administration I: Core Operations for Cloud Operators (CL110)
+
+
+
+*Course description*
+
+Introduction to Red Hat OpenStack Platform and the deployment of virtual cloud servers and applications
+
+Red Hat OpenStack Administration I: Core Operations for Cloud Operators (CL110) is designed for system administrators who are intending to implement a cloud computing environment using OpenStack. You will learn how to configure, use, and maintain Red Hat(R) OpenStack Platform.
+
+This course is based on Red Hat Enterprise Linux 7.5 and Red Hat OpenStack Platform 13.0.
+
+*Course content summary*
+
+The focus of Red Hat OpenStack Administration I: Core Operations for Cloud Operators (CL110) will be managing OpenStack using both the web-based dashboard and the command-line interface, in addition to managing instances and installing a proof-of-concept environment using Red Hat OpenStack Platform (RHOSP) director. Essential skills covered in the course include configuring Red Hat OpenStack Platform (using the director UI); managing users, projects, flavors, roles, images, networking, and block storage; setting quotas; and configuring images at instantiation.
+
+
+* Launch an instance.
+* Manage projects, quotas, and users.
+* Manage networks, subnets, routers, and floating IP addresses.
+* Create and manage block and object storage in the OpenStack framework.
+* Customize instances with cloud-init.
+* Deploy scalable stacks.
+* Deploy Red Hat OpenStack Platform using RHOSP director.
+
+
+*Audience for this course*
+
+This course is designed for Linux system administrators, cloud administrators, and cloud operators interested in, or responsible for, maintaining a private or hybrid cloud.
+
+*Prerequisites for this course*
+
+
+Become a Red Hat Certified System Administrator (RHCSA) or demonstrate equivalent experience
+
+
+For candidates that have not earned their RHCSA, confirmation of the correct skill set knowledge can be obtained by passing the online skills assessment.
+
+
+
+For full details, or to enroll: +
+https://www.redhat.com/en/services/training/cl110-red-hat-openstack-administration-i

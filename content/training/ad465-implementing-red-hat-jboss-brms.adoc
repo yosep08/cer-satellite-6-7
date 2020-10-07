@@ -1,0 +1,49 @@
+= Implementing with Red Hat JBoss BRMS (AD465)
+
+
+
+*Course description*
+A combination of Authoring Rules (JB461) and Developing Rules Applications with Red Hat JBoss BRMS (JB463)
+Implementing with Red Hat(R) JBoss(R) BRMS combines content from both Authoring Rules with Red Hat JBoss BRMS (JB461) and Developing Rules Applications with Red Hat JBoss BRMS (JB463). It teaches business analysts, rule developers, and Java(TM) enterprise application developers how to create, test, debug, and control business rules.
+
+
+*Course overview*
+Students are given detailed, hands-on exercises using Red Hat JBoss Developer Studio and Red Hat JBoss BRMS that are designed to let students create and manage business rules in a production environment. This course can also help you prepare for the Red Hat Certified Specialist in Business Rules Management exam (EX465).
+
+*Course content summary*
+
+* Authoring basic business rules in JBoss Developer Studio and Business Central
+* Integrating business rules with Java applications
+* Authoring advanced rules
+* Testing business rules
+* Authoring and testing rules in decision tables
+* Authoring rule templates and generating rules from decision tables
+* Authoring domain-specific languages
+* BRMS architecture and rule execution at run time
+* Controlling rule execution and preventing conflicts
+* Complex event processing (CEP)
+* Integration with Business Central
+
+
+**
+
+
+
+*Audience for this course*
+
+
+
+Business analysts and enterprise SOA architects who are responsible for creating and adapting business policies.
+Rule authors responsible for authoring and testing rules.
+Java EE application developers responsible for integrating business rules into SOA and Java EE enterprise applications.
+
+
+*Prerequisites for this course*
+
+Basic Java/Java EE programming experience.
+Knowledge of the Eclipse IDE, Maven, and GIT are useful, but not essential.
+
+
+
+For full details, or to enroll: +
+https://www.redhat.com/en/services/training/ad465-implementing-red-hat-jboss-brms

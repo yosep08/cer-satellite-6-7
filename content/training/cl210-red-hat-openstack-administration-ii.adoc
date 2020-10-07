@@ -1,0 +1,42 @@
+= Red Hat OpenStack Administration II: Infrastructure Configuration for Cloud Administrators (CL210)
+
+
+
+*Course description*
+
+Introduction to Red Hat OpenStack Platform configuration and administration of private cloud infrastructure using core OpenStack services
+
+Red Hat OpenStack Administration II: Infrastructure Configuration for Cloud Administrators (CL210) teaches you how to implement a full-featured cloud computing environment using OpenStack. You will learn how to configure, administer, and manage Red Hat(R) OpenStack Platform infrastructure. The lessons and objectives taught in this course will prepare you for the Red Hat Certified System Administrator in Red Hat OpenStack exam (EX210).
+
+This course is based on Red Hat OpenStack Platform 13.0 and Red Hat(R) Enterprise Linux(R) 7.5.  
+
+The focus of this course is on managing and using the OpenStack client command-line interface and the director and dashboard graphical web user interfaces to securely manage server instances, compute and storage resources, and user identities.
+
+*Course content summary*
+
+
+* Gain familiarity with overcloud service containerization technology.
+* Learn about Open Virtual Networking (OVN) enhancement to OVS.
+* Use identity service v3 (keystone) with external Red Hat IdM store.
+* Manage the core control plane, including Pacemaker.
+* Customize images, with techniques for multiple use cases.
+* Manage block and object storage.
+* Manage compute nodes, including tuning and hyperconvergence.
+* Deploy multi-container stacks.
+* Troubleshoot OpenStack.
+
+
+*Audience for this course*
+
+This course is intended for Linux system administrators, cloud administrators, cloud operators, and infrastructure architects interested in, or responsible for, maintaining a private or hybrid cloud.
+
+*Prerequisites for this course*
+
+
+Be a Red Hat Certified System Administrator (RHCSA), or demonstrate equivalent experience by passing the online skills assessment
+Attend Red Hat OpenStack Administration I: Core Operations for Cloud Operators (CL110), or demonstrate equivalent experience
+
+
+
+For full details, or to enroll: +
+https://www.redhat.com/en/services/training/cl210-red-hat-openstack-administration-ii

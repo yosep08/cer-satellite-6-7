@@ -1,0 +1,37 @@
+= Container Adoption Boot Camp (DO700)
+
+
+
+
+*Course description*
+Supporting the adoption of container technology and container-native applications 
+The Container Adoption Boot Camp for Administrators (DO700) immerses you in intensive, hands-on management of container-native applications deployed on Red Hat's implementation of Kubernetes, Red Hat(R) OpenShift(R) Container Platform, and how to configure robust clusters that provide high availability (HA) and the ability to run large numbers of applications. As part of enrollment, you will receive one year of Red Hat Learning Subscription Standard, which gives you unlimited access to all of our courses online, plus up to five certification exams and two retakes.
+This collection of courses is based on Red Hat OpenShift Container Platform 3.6 and 3.9.
+
+*Course content summary*
+
+* Introduction to Containers, Kubernetes, and Red Hat OpenShift
+* Red Hat OpenShift installation and configuration
+* Deploying and troubleshooting containerized applications for OpenShift
+* Creating a highly available OpenShift cluster
+* Provisioning persistent storage for an OpenShift cluster
+* Deploying OpenShift Container Storage
+* Controlling access to projects using role-based access control (RBAC)
+* Deploying metrics monitoring
+* Deploying and configuring log aggregation
+
+
+*Audience for this course*
+
+This course is for administrators who want to progress in their journey toward digital leadership within organizations. Making this shift involves developing software in tight iterations so that business value can be realized sooner. This offering enables IT operations staff to support their organization’s adoption of container-native applications, including microservices. 
+
+Prerequisites for this training
+Become a Red Hat Certified System Administrator (RHCSA), or demonstrate equivalent experience
+
+
+Technology requirements
+Internet access is required for this course in order to access the OpenShift shared and dedicated clusters.	
+
+
+For full details, or to enroll: +
+https://www.redhat.com/en/services/training/do700-container-adoption-boot-camp

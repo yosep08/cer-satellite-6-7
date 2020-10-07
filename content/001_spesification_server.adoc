@@ -1,0 +1,36 @@
+.Red Hat Participants
+[cols="3,4,5",options=header]
+|===
+|Name
+|Role
+|E-mail address
+
+// Name
+| Csaba Eber
+// Role
+| Project Manager
+// Email Address
+| ceber@redhat.com
+
+// Name
+| Karlo Paulino
+// Role
+| Architect
+// Email Address
+| kpaulino@redhat.com
+
+// Name
+| Indra Kurniawan
+// Role
+| Consultant
+// Email Address
+| ikurniaw@redhat.com
+
+// Name
+| Yosep Puji Rohman
+// Role
+| Consultant
+// Email Address
+| ypujiroh@redhat.com
+
+|===

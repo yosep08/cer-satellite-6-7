@@ -1,0 +1,85 @@
+<<<
+= Subscription Management
+
+== RHSM
+
+Red Hat Subscription Management (RHSM) is a service that manages {cust}'s Red Hat subscriptions and entitlements.
+
+Red Hat Satellite 6 imports content from Red Hat’s Content Delivery Network (CDN).
+To do this, Satellite needs to know what product subscriptions are available.
+
+In the context of Red Hat Satellite, RHSM consists of three components, listed in the table below.
+
+.RHSM
+
+[cols=2,cols="1,5",options=header,width=99%]
+
+|===
+<|Tool <|Description
+
+|Candlepin
+|Open-source subscription service (client/server)
+
+|CDN
+|Content Delivery Network - includes content and errata designed to be used by systems.
+
+|Satellite 6
+|Subscription service interface.
+
+|===
+
+RHSM uses secure certificates to verify where subscriptions are being used.
+
+During the installation of any Red Hat product, a product certificate is installed on the client system.
+
+
+== Subscription Manifest
+
+All subscription information is available in {cust}'s Red Hat Customer Portal account and this information can be imported.
+
+To import this information into Satellite, a so-called 'Subscription Manifest' is created.
+
+The Subscription Manifest is a set of encrypted files that contain {cust}'s subscription information. The manifest file is imported into the the Satellite Server. The Satellite Server then uses this information to access the CDN and find what repositories are available.
+
+IMPORTANT: If {cust} plans to use the Organization feature of Satellite 6, please make note that this feature was designed to separate units of the infrastructure. Subscriptions, including Virtual Datacenter (VDC) subscriptions *cannot* be shared between Organizations. If required, {cust} can use VM-Host Affinity Rules to subdivide VDC subscriptions.
+
+
+image::satellite_6_server_multiple_manifests.png[pdfwidth=80%]
+
+Reference:
+
+* {sat6x_inst_plan}
+
+== Consuming subscriptions
+
+See <<Red Hat Subscriptions Overview,Red Hat Subscriptions Overview>> for more detailed
+information on subscriptions.
+
+== virt-who
+
+virt-who is a daemon, installable on the Satellite server, for reporting virtual guest IDs to Satellite. virt-who has the ability to scan for third-party hypervisors, registering the hypervisors on the Satellite. virt-who also uploads the list of guest UUIDs associated with the hypervisors.
+
+NOTE: Virt-who comes with {rhel}, not with {rhsat}.
+
+Registering virtual machines with an activation key that has auto-attach enabled and *no* subscriptions attached. will set the virtual machines to inherit the VDC subscription from the hypervisor.
+
+IMPORTANT: Red Hat Satellite 6 provides two methods of configuring virt-who: with the Satellite web UI and the hammer tool. These methods replace the previous method of manually creating and editing configuration files.
+
+image::Satellite6_Virtual_Instance_Guide_396537_0716_JCS.png[pdfwidth=80%]
+
+*Auto-Attach Subcription Steps*
+
+. A virtual machine is provisioned using Satellite.
+. The virtual machine requests a subscription from the Satellite Server.
+. As the subscription manager doesn’t yet know to which host the virtual machine belongs, a temporary subscription is granted, valid for a maximum 7 days.
+. The virt-who daemon connects to the virtualization manager or hypervisor and requests details of the guest virtual machines. By default, this request is made every hour, but the interval is configurable. Red Hat recommends this value remain at the default unless requested by Red Hat Support.
+. The virtualization manager or hypervisor returns to virt-who the list of guest virtual machines, including each UUID.
+. The virt-who daemon reports to the Satellite Server the list of guest virtual machines.
+. The Satellite Server then reconciles the subscriptions required by the virtual machines with those available. If the required subscriptions are available, they are assigned to the virtual machine and its subscription is complete.
+
+NOTE: virt-who requires an account with read-only access to the virtualization manager (e.g. VMware vCenter).
+
+Reference:
+
+* {sat6x_sub_management}
+* {sat6x_admin_vm_sub}

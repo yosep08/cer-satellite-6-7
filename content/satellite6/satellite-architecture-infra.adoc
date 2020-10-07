@@ -1,0 +1,235 @@
+<<<
+= Satellite Infrastructure
+
+== Context
+
+* While systems can be virtual or baremetal, Red Hat recommends {cust} to install {sat} as a {vm} on VMware.
+* The installation is connected so software is downloaded from the Red Hat Content Delivery Network through a corporate proxy.
+* Red Hat Satellite and Red Hat Satellite Capsule Server are installed upon a Red Hat Enterprise Linux 7 Operating System.
+* As {cust} uses Virtual Data Center subscriptions, virt-who is a requirement to provide Subscriptions to the managed virtual hosts.
+* Existing systems need to be migrated.
+* Satellite 6 currently supports {rhel} 6, 7 and 8.
+
+== System Requirements
+
+=== Satellite
+
+* 64-bit architecture.
+* The latest version of Red Hat Enterprise Linux 7 Server.
+* 4-core 2.0 GHz CPU at a minimum.
+* A minimum of 20 GB memory is required for the Satellite Server to function. In addition, a minimum of 4 GB of swap space is also recommended. Satellite running with less memory than the minimum value might not operate correctly.
+* A unique host name, which can contain lower-case letters, numbers, dots (.) and hyphens (-).
+* A current Red Hat Satellite subscription.
+* Administrative user (root) access.
+* A system umask of 0022.
+* Full forward and reverse DNS resolution using a fully-qualified domain name.
+* Satellite Server must be installed on a freshly provisioned system that serves no other function except to run Satellite Server.
+* Red Hat Satellite Server and Red Hat Satellite Capsule Server require Red Hat Enterprise Linux installations with the @Base package group with no other package-set modifications and without third-party configurations or software not directly necessary for the direct operation of the server. This restriction includes hardening and other non-Red Hat security software.
+
+NOTE: The Red Hat Satellite Server and Capsule Server versions must match. For example, a Satellite 6.6 Server cannot run a 6.5 Capsule Server and a Satellite 6.5 Server cannot run a 6.6 Capsule Server. Mismatching Satellite Server and Capsule Server versions results in the Capsule Server failing silently.
+
+IMPORTANT: Self-registered Satellites are not supported.
+
+Reference:
+
+* {sat6x_inst_conn_req}
+
+=== Capsule
+
+* 64-bit architecture.
+* The latest version of Red Hat Enterprise Linux 7 Server.
+* 4-core 2.0 GHz CPU at a minimum.
+* A minimum of 20 GB memory is required for the Capsule Server to function. In addition, a minimum of 4 GB of swap space is also recommended. Capsules running with less  memory than the minimum value might not operate correctly.
+* A unique host name, which can contain lower-case letters, numbers, dots (.) and hyphens (-).
+* A current Red Hat Satellite subscription.
+* Administrative user (root) access.
+* A system umask of 0022.
+* Full forward and reverse DNS resolution using a fully-qualified domain name.
+
+Reference:
+
+* {sat6x_inst_cap_req}
+
+== Storage Requirements and Guidelines
+
+This section lists minimum storage requirements and provides storage guidelines for Satellite Server and Capsule Server installation.
+
+=== Storage Requirements - Satellite
+
+The following tables detail storage requirements for specific directories. These values are based on expected use case scenarios and can vary according to individual environments.
+
+[cols=3,cols="2,1,1*",options=header,width=90%]
+|===
+
+|Directory
+|Installation Size
+|Runtime Size
+
+|/var/cache/pulp/
+|1 MB
+|20 GB
+
+|/var/lib/pulp/
+|1 MB
+|500 GB
+
+|/var/lib/mongodb/
+|3.5 GB
+|50 GB
+
+|/var/lib/qpidd/
+|25 MB
+|Not Applicable
+
+|/var/log/
+|10 MB
+|250 MB
+
+|/var/lib/pgsql/
+|100 MB
+|10 GB
+
+|/var/spool/squid/
+|0 MB
+|10 GB
+
+|/usr
+|3 GB
+|Not Applicable
+
+|/opt
+|3 GB
+|Not Applicable
+
+|/opt/puppetlabs
+|500 MB
+|Not Applicable
+
+|===
+
+=== Storage Requirements - Capsule Server
+
+[cols=3,cols="2,1,1*",options=header,width=90%]
+|===
+
+|Directory	|Installation Size	|Runtime Size
+
+|/var/cache/pulp/
+|1 MB
+|20 GB (Minimum)
+
+|/var/lib/pulp/
+|1 MB
+|500 GB
+
+|/var/lib/mongodb/
+|3.5 GB
+|50 GB
+
+|/opt
+|500 MB
+|Not Applicable
+
+|===
+
+=== Storage Guidelines
+
+Consider the following guidelines when installing Satellite Server to increase efficiency.
+
+* Because most Satellite and Capsule Server data is stored within the /var directory, mounting /var on LVM storage can help the system to scale.
+* For the /var/lib/pulp/ and /var/lib/mongodb/ directories, use high-bandwidth, low-latency storage, and solid state drives (SSD) rather than hard disk drives (HDD).
+* Ensure the Satellite environment has a disk speed in the range 60 - 80 Megabytes per second. Use the `foreman-maintain` tool to get this data.
+* Using the same volume for the /var/cache/pulp/ and /var/lib/pulp/ directories can decrease the time required to move content from /var/cache/pulp/ to /var/lib/pulp/ after synchronizing.
+
+Reference:
+
+* {sat6x_disk_speed}
+* {sat6x_inst_conn_storage}
+
+=== File System Guidelines
+
+* Use the XFS file system for Red Hat Satellite 6 because it does not have the inode limitations that ext4 does.
+* Do not use NFS with MongoDB.
+* Do not use the GFS2 file system as the input-output latency is too high.
+* Packages that are duplicated in different repositories are only stored once on the disk. Additional repositories containing duplicate packages require less additional storage. The bulk of storage resides in the /var/lib/mongodb/ and /var/lib/pulp/ directories. These end points are not manually configurable. Ensure that storage is available on the /var file system to prevent storage problems.
+* The /var/cache/pulp/ directory is used to temporarily store content while it is being synchronized. For content in RPM format, a maximum of 5 RPM files are stored in this directory at any time. After each file is synchronized, it is moved to the /var/lib/pulp/ directory. Up to 8 RPM content synchronization tasks can run simultaneously by default, with each using up to 1 GB of metadata.
+* Software collections are installed in the /opt/rh/ and /opt/theforeman/ directories, write and execute permissions by the root user are required for installation to the /opt directory.
+* You cannot use symbolic links for /var/lib/pulp/ and /var/lib/mongodb/.
+
+== Firewall and Proxy
+
+{sat} has to be able to access the Content Delivery Network or Red Hat. if {sat} will access the Red Hat CDN through a proxy server at {cust}, proxy connectivity and throughput are critical for proper synchronization of content from the CDN to {sat}.
+
+Make sure the proxy server can access the following urls directly (without SSL termination):
+
+* cdn.redhat.com 
+* subscription.rhsm.redhat.com 
+
+The full list of required and optional ports that need to be open between the different components is extensive. The most up to date version can be found at the referenced pages.
+
+Reference:
+
+* {sat6x_inst_conn_port}
+* {sat6x_inst_cap_port}
+
+== High Availability
+
+When using Satellite 6 the preferred method of providing intra-site high availability to is to virtualize the Satellite and Capsule servers and use the hypervisor tools to provide high availability of the virtual machine hosting the Satellite or Capsule.
+
+This combination of virtualized Satellite and Capsule servers and an HA capable hypervisor can provide high availability in case of an outage event and doesn't require any special configuration on the Satellite or Capsule.
+
+The advice for disaster recovery is similar. Red Hat recommends to virtualize the Satellite Server. To provide inter-site disaster recovery of the virtual machine running Satellite {cust} should leverage virtual machine replication, making sure that the hostname of the Satellite Server does not change. It is fine for the IP address to change during failover/failback as long as the hostname does not change.
+
+Another option is to take regular backups of the Satellite Server using satellite-backup and pre-stage them on a remote site.
+In Satellite 6 it is possible to take snapshot based backups using Logical Volume Manager (LVM) snapshots of the Pulp, MongoDB, and PostgreSQL directories. Snapshot based backups significantly reduces the amount of service downtime needed to complete a backup.
+
+NOTE: It's recommended to combine both VMware level snapshots and satellite-backups.
+
+Reference:
+
+* {sat6x_ha}
+
+== Capsules
+
+A Satellite Capsule Server provides federated services to discover, provision, and configure hosts outside of the primary Satellite server.
+
+This way a Satellite deployment can be scaled out and {cust} can create various Capsules in different (geographical) locations.
+Capsule servers are centrally managed by the Satellite Server.
+
+Creating various Satellite Capsule Servers will decrease the load on the central server, increase redundancy, and reduce bandwidth usage.
+
+Red Hat recommends the following guidelines:
+
+* Don't register clients directly to the Satellite. Only register them via Capsules.
+* Deploy Capsules geographically and liberally.
+* Load balance capsules if needed
+
+Reference:
+
+* {sat6x_inst_plan}
+* {sat6x_admin_lb}
+
+== Compute resources
+
+TIP: Each VCenter should be added as a separate compute resource. This integration enables {cust} to deploy new virtual machines quickly.
+
+=== Compute profiles
+
+Each server can be deployed using a compute profile on the available compute resources. The systems management running the specific virtual environment can assist in designing the compute profiles.
+
+This will allow for deployment of different preset system sizes.
+
+The following profiles are created by default, and could be customized further.
+
+TIP: Don't create to many profiles, stick to S / M / L and maybe XL. The idea is to create a Standard Operating Environment (SOE), so less is more.
+
+.Default compute profiles
+[cols=7,cols="1,1,1,1,1,1,1",options=header,width=90%]
+
+|===
+
+|Profile  |vCPU |Cores / Sockets |Memory   |Storage pool |Disk1  |Disk2
+|1-small  |2     |2/1              |4096MiB  |<TBD>        |50GiB  |None
+|2-medium |4     |4/1              |8192MiB  |<TBD>        |50GiB  |None
+|3-large  |8     |8/2              |16384MiB |<TBD>        |50GiB  |None
+|===

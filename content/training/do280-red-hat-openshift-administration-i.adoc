@@ -1,0 +1,55 @@
+= Red Hat OpenShift Administration I (DO280)
+
+
+
+*Course description*
+
+Create, configure, manage, and troubleshoot OpenShift clusters
+
+Red Hat OpenShift Administration I (DO280) teaches you how to install and administer the Red Hat(R) OpenShift(R) Container Platform . This hands-on, lab-based course shows you how to install, configure, and manage OpenShift clusters and deploy sample applications to further understand how developers will use the platform.
+
+This course is based on Red Hat(R) Enterprise Linux(R) 8.0 and Openshift Container Platform 4.5.
+
+OpenShift is a containerized application platform that allows enterprises to manage container deployments and scale their applications using Kubernetes. OpenShift provides predefined application environments and builds upon Kubernetes to provide support for DevOps principles such as reduced time to market, infrastructure-as-code, continuous integration (CI), and continuous delivery (CD).
+
+*Course summary*
+
+
+* Describe the Red Hat OpenShift Container Platform cluster installation and update processes
+* Troubleshoot application deployments
+* Configure authentication using local users
+* Control access to projects using role-based access control (RBAC)
+* Configure service and container networking
+* Configure pod scheduling using labels and selectors
+* Limit compute resource usage
+* Scale a cluster
+* Monitor cluster events and alerts
+
+
+*Audience for this course*
+
+This course is designed for system administrators, system architects, and developers who want to install and configure Red Hat OpenShift Container Platform.
+
+
+* System and Software Architects interested in understanding features and functionality of an OpenShift cluster.
+* System Administrators interested in the initial establishment of a cluster.
+* Cluster Operators interested in the ongoing maintenance of a cluster.
+* Site Reliability Engineers interested in the ongoing maintenance and troubleshooting of a cluster.
+
+
+*Technology considerations*
+
+
+* Internet access is required.
+
+
+*Prerequisites for this course*
+
+
+Become a Red Hat Certified System Administrator, or demonstrate equivalent Red Hat Enterprise Linux system administration experience
+Complete Introduction to Containers, Kubernetes, and Red Hat OpenShift (DO180), or demonstrate equivalent experience with containers, Kubernetes, and OpenShift basics
+
+
+
+For full details, or to enroll: +
+https://www.redhat.com/en/services/training/do280-red-hat-openshift-administration-i

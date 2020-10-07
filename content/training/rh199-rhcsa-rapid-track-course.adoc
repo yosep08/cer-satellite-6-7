@@ -1,0 +1,44 @@
+= RHCSA Rapid Track Course (RH199)
+
+
+
+*Course description*
+
+Learn essential Red Hat Enterprise Linux 8 tasks and methods in a condensed format
+
+The RHCSA Rapid Track course (RH199) combines the foundations and applications established and covered in Red Hat System Administration I (RH124) and Red Hat System Administration II (RH134). The rapid pace of review and consolidated course timeline allow you to focus on practical application, making this offering best suited to those who already have significant experience with Linux(R) administration.
+
+This course is based on Red Hat(R) Enterprise Linux 8.
+
+*Course content summary*
+
+
+* Package management with new repository structure and appstream modules
+* Create storage devices, volumes, and file systems, including Stratis storage management
+* Configure network services and security
+* Manage processes, scheduling, and tuning
+* Manage users, groups, and authentication
+* Perform server management with the Cockpit web management utility
+* Troubleshoot and obtain support
+
+
+*Audience for this course*
+
+This course is geared toward Windows system administrators, network administrators, and other system administrators who are interested in supplementing current skills or backstopping other team members, in addition to Linux system administrators who are responsible for these tasks:
+
+* Configuring, installing, upgrading, and maintaining Linux systems using established standards and procedures
+* Providing operational support
+* Managing systems for monitoring system performance and availability
+* Writing and deploying scripts for task automation and system administration
+
+
+*Prerequisites for this course*
+
+
+You will be expected to already understand fundamental Linux computing concepts and be ready to practice the Red Hat Enterprise Linux methods for performing system administration tasks. Significant field experience working with Linux as a system administrator is recommended.
+If you do not have experience with fundamental Linux computer concepts, we advise you to start with the Red Hat System Administration I (RH124) course instead.
+
+
+
+For full details, or to enroll: +
+https://www.redhat.com/en/services/training/rh199-rhcsa-rapid-track-course
