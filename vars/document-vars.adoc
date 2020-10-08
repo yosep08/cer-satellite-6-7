@@ -19,7 +19,7 @@
 
 
 // docstatus - indicates where in the lifecycle CER is (draft, in-progress, finish)
-:docstatus: in-progress
+:docstatus: finish
 
 
 ifeval::[ "{docstatus}" == "draft"]

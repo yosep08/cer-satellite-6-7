@@ -1,0 +1,264 @@
+= Prerequisites
+ 
+== Enabling Connections from a Client to Satellite Server
+ 
+Capsules and Content Hosts that are clients of a Satellite Server’s internal Capsule require access through Satellite’s host-based firewall and any network-based firewalls.
+ 
+ 
+[source,go]
+----
+# firewall-cmd \
+--add-port="80/tcp" --add-port="443/tcp" \
+--add-port="5647/tcp" --add-port="8000/tcp" \
+--add-port="8140/tcp" --add-port="9090/tcp" \
+--add-port="53/udp" --add-port="53/tcp" \
+--add-port="67/udp" --add-port="69/udp" \
+--add-port="5000/tcp"
+
+ # firewall-cmd --runtime-to-permanent
+----
+ 
+== Verify firewalld settings
+ 
+To verify the firewall settings, complete the following step:
+ 
+[source,go]
+----
+# firewall-cmd --list-all
+ 
+----
+ 
+== Verifying DNS resolution
+ 
+DNS forward and backward resolution is needed. As DNS records are not available during installation, SBC has provided /etc/hosts for the deployment.
+ 
+= Installing Satellite Server
+ 
+== Registering to Red Hat Subscription Management
+Registering the host to Red Hat Subscription Management enables the host to subscribe to and consume content for any subscriptions available to the user.
+If you using proxy make sure proxy IP or hostname put in /etc/rhsm/rhsm.conf 
+ 
+=== On Satellite Server, complete the following details in the /etc/rhsm/rhsm.conf file
+[source,go]
+----
+# an http proxy server to use (enter server FQDN)
+proxy_hostname = myproxy.example.com
+
+# port for http proxy server
+proxy_port = 8080
+
+# user name for authenticating to an http proxy, if needed
+proxy_user =
+
+# password for basic http proxy auth, if needed
+proxy_password =
+----
+
+=== Register Server
+[source,go]
+----
+# subscription-manager register
+Username: user_name
+Password:
+The system has been registered with ID: 541084ff2-44cab-4eb1-9fa1-7683431bcf9a
+ 
+----
+ 
+== Attaching the Satellite Infrastructure Subscription
+ 
+After you have registered Satellite Server, you must identify your subscription Pool ID and attach an available subscription. The Red Hat Satellite Infrastructure subscription provides access to the Red Hat Satellite, Red Hat Enterprise Linux, and Red Hat Software Collections (RHSCL) content. This is the only subscription required
+ 
+[source,go]
+----
+# subscription-manager list --all --available --matches 'Red Hat Satellite Infrastructure Subscription'
+Subscription Name:   Red Hat Satellite Infrastructure Subscription
+Provides:            Red Hat Satellite
+                      Red Hat Software Collections (for RHEL Server)
+                      Red Hat CodeReady Linux Builder for x86_64
+                      Red Hat Ansible Engine
+                      Red Hat Enterprise Linux Load Balancer (for RHEL Server)
+                      Red Hat
+                      Red Hat Software Collections (for RHEL Server)
+                      Red Hat Enterprise Linux Server
+                      Red Hat Satellite Capsule
+                      Red Hat Enterprise Linux for x86_64
+                      Red Hat Enterprise Linux High Availability for x86_64
+                      Red Hat Satellite
+                      Red Hat Satellite 5 Managed DB
+                      Red Hat Satellite 6
+                      Red Hat Discovery
+SKU:                 MCT3719
+Contract:            11878983
+Pool ID:             8a85f99968b92c3701694ee998cf03b8
+Provides Management: No
+Available:           1
+Suggested:           1
+Service Level:       Premium
+Service Type:        L1-L3
+Subscription Type:   Standard
+Ends:                03/04/2020
+System Type:         Physical
+
+# subscription-manager attach --pool=pool_id
+
+# subscription-manager list --consumed
+ 
+----
+ 
+== Configuring Repositories
+ 
+Use this procedure to enable the repositories that are required to install Satellite Server.
+ 
+[source,go]
+----
+# subscription-manager repos --disable "*"
+
+# subscription-manager repos --enable=rhel-7-server-rpms \
+--enable=rhel-7-server-satellite-6.7-rpms \
+--enable=rhel-7-server-satellite-maintenance-6-rpms \
+--enable=rhel-server-rhscl-7-rpms \
+--enable=rhel-7-server-ansible-2.8-rpms
+
+# yum clean all
+
+# yum repolist enabled
+ 
+----
+ 
+== Installing the Satellite Server Packages
+ 
+You must update all packages before installing the Satellite Server packages.
+ 
+[source,go]
+----
+# yum update -y
+
+# yum install satellite
+ 
+----
+ 
+== Configuring Satellite Server
+ 
+Install Satellite Server using the satellite-installer installation script :
+ 
+ 
+[source,go]
+----
+# satellite-installer --scenario satellite \
+--foreman-initial-organization "Security_Bank" \
+--foreman-initial-location "HQ" \
+--foreman-initial-admin-username admin_user_name \
+--foreman-initial-admin-password admin_password 
+ 
+----
+ 
+== Importing a Subscription Manifest into Satellite Server
+ 
+Use the following procedure to import a Subscription Manifest into Satellite Server.
+
+=== Prerequisites
+
+You must have a Subscription Manifest file exported from the Customer Portal. For more information, see Using Manifests in the Using Red Hat Subscription Management guide.
+
+ 
+[source,go]
+----
+# scp ~/manifest_file.zip root@rhsatellite01.sbcdom.com:~/.
+
+# hammer subscription upload \
+--file ~/manifest_file.zip \
+--organization "HQ"
+ 
+----
+ 
+== Using Red Hat Insights with Satellite Server
+ 
+To install and register Red Hat Insights on Satellite Server, enter the following command:
+ 
+[source,go]
+----
+# satellite-maintain packages install insights-client
+
+# insights-client --register
+ 
+----
+ 
+== Enabling the Satellite Tools 6.7 Repository
+ 
+The Satellite Tools 6.7 repository provides the katello-agent, katello-host-tools, and puppet packages for clients registered to Satellite Server.
+ 
+[source,go]
+----
+# hammer repository-set enable --organization "HQ" \
+--product 'Red Hat Enterprise Linux Server' \
+--basearch='x86_64' \
+--name 'Red Hat Satellite Tools 6.7 (for RHEL 7 Server) (RPMs)'
+ 
+----
+ 
+== Configuring Satellite Server with an HTTP Proxy
+
+Use the following procedures to configure Satellite with an HTTP proxy.
+
+=== Verify that the http_proxy, https_proxy, and no_proxy variables are not set.
+[source,go]
+----
+# unset http_proxy
+# unset https_proxy
+# unset no_proxy
+----
+
+=== Add an HTTP proxy entry to Satellite:
+[source,go]
+----
+# hammer http-proxy create --name=myproxy \
+--url http://myproxy.example.com:8080  \
+--username=proxy_username \
+--password=proxy_password
+----
+
+
+=== Configure Satellite to use this HTTP proxy by default:
+[source,go]
+----
+# hammer settings set --name=content_default_http_proxy --value=myproxy
+----
+
+
+=== Configuring Satellite Server with a Custom SSL Certificate
+By default, Red Hat Satellite 6 uses a self-signed SSL certificate to enable encrypted communications between Satellite Server, external Capsule Servers, and all hosts. If you cannot use a Satellite self-signed certificate, you can configure Satellite Server to use an SSL certificate signed by an external Certificate Authority.
+
+==== Validate the custom SSL certificate input files
+[source,go]
+----
+# katello-certs-check \
+-c /root/satellite_cert/satellite_cert.pem \      
+-k /root/satellite_cert/satellite_cert_key.pem \  
+-b /root/satellite_cert/ca_cert_bundle.pem 
+----
+==== Example Output
+[source,go]
+----
+Validation succeeded.
+
+To install the Red Hat Satellite Server with the custom certificates, run:
+
+  satellite-installer --scenario satellite \
+    --certs-server-cert "/root/satellite_cert/satellite_cert.pem" \
+    --certs-server-key "/root/satellite_cert/satellite_cert_key.pem" \
+    --certs-server-ca-cert "/root/satellite_cert/ca_cert_bundle.pem"
+
+To update the certificates on a currently running Red Hat Satellite installation, run:
+
+  satellite-installer --scenario satellite \
+    --certs-server-cert "/root/satellite_cert/satellite_cert.pem" \
+    --certs-server-key "/root/satellite_cert/satellite_cert_key.pem" \
+    --certs-server-ca-cert "/root/satellite_cert/ca_cert_bundle.pem" \
+    --certs-update-server --certs-update-server-ca
+----
+From the output of the katello-certs-check command, depending on your requirements, enter the satellite-installer command that installs a new Satellite with custom SSL certificates or updates certificates on a currently running Satellite.
+
+
+//== List of Relevant Playbooks and Roles
+
+//#TODO# Add playbooks and roles

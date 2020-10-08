@@ -67,24 +67,15 @@ include::content/130_architecture.adoc[leveloffset=+3]
 include::content/140_implementation.adoc[leveloffset=+3]
 
 <<<
-=== Validation Procedure
-include::content/150_validation.adoc[leveloffset=+3]
+=== Capture Web Satellite
+include::content/satellite6/141_capture.adoc[leveloffset=+3]
+<<<
+ 
+<<<
 
 <<<
-=== Summary of Knowledge Transfer
-
-<<<
-=== Challenges, Resolutions, and Recommendations
-
-<<<
-== Recommendations
-
-=== Technical Next Steps
-
 === Relevant Training
 include::content/190_recommendations-relevant-training.adoc[leveloffset=+3]
-
-=== Other
 
 <<<
 [appendix]
@@ -101,8 +92,6 @@ include::content/220_additional-appendices.adoc[leveloffset=+1]
 include::content/230_relevant-links.adoc[leveloffset=+2]
 
 <<<
-[appendix]
-== Statement of Work
 
 <<<
 [appendix]

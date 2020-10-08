@@ -17,4 +17,4 @@ image::architecture.jpg[pdfwidth=90%]
 = Environment Setup
 Steps to prepare or create the environment for the proposed architecture
 
-content::001_spesification_server.adoc[leveloffset=+3]
+image::satellite_ip.png[pdfwidth=90%]

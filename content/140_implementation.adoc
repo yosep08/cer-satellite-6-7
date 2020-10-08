@@ -10,4 +10,10 @@ your product directory is missing a corresponding "implementation.adoc" which
 should be created to provide a basic implementation framework for that product.
 ////
 
-#TODO#
+= Red Hat Satellite Installation
+
+include::satellite6/satellite-implementation.adoc[leveloffset=+1]
+include::satellite6/satellite-troubleshooting-locations.adoc[leveloffset=+1]
+
+= Capsule Server Installation
+include::satellite6/capsule-implementation.adoc[leveloffset=+1]

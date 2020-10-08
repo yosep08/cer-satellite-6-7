@@ -1,0 +1,17 @@
+= Login Page
+image::login.jpg[pdfwidth=90%]
+
+= Dashboard Page
+image::dashboard.jpg[pdfwidth=90%]
+
+= About
+image::about.jpg[pdfwidth=90%]
+
+= Sync Status
+image::sync.jpg[pdfwidth=90%]
+
+= Insight Page
+image::insight.jpg[pdfwidth=90%]
+
+= Capsule Page
+image::capsule1.jpg[pdfwidth=90%]
